@@ -1,0 +1,49 @@
+.userprofile-cont {
+  /* border: 1px solid; */
+  min-width: 93%;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggle-user {
+  /* border: 1px solid; */
+  min-width: 50%;
+  min-height: 8vh;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.toggle-btn {
+  border: none;
+  min-width: 100px;
+  max-width: 100px;
+  font-size: 20px;
+  font-family: var(--font1);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.switch-cont {
+  /* border: 1px solid; */
+  min-width: 100%;
+  min-height: 73vh;
+}
+
+@media (max-width: 786px) {
+  .toggle-user {
+    /* border: 1px solid; */
+    max-width: 95vw;
+    max-width: 95vw;
+    min-height: 6vh;
+  }
+  .toggle-btn{
+    font-size: 16px;
+    min-width: 80px;
+    max-width: 80px;
+    max-height: 6vh;
+  }
+}

@@ -1,0 +1,54 @@
+.logreg-cont {
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.308);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  /* border: 1px solid salmon; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 35%;
+  min-width: 35%;
+  min-height: 70%;
+  max-height: 70%;
+  gap: 8px;
+  background-color: var(--lightpurple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px 0px;
+}
+input {
+  padding: 15px;
+  max-width: 90%;
+  min-width: 90%;
+  border: 1px solid var(--blue);
+  background-color: transparent;
+}
+
+.btn-sep {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+.btn-sep:hover {
+  color: red;
+}
+
+.close-action {
+  display: none;
+}

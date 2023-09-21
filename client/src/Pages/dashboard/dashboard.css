@@ -1,0 +1,7 @@
+.dash-cont {
+  /* border: 1px solid; */
+  min-height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

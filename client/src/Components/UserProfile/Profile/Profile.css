@@ -1,0 +1,38 @@
+.profile-cont {
+  /* border: 1px solid; */
+  min-height: 73vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+}
+.profile-cont h2 {
+  min-width: 13%;
+  min-height: 20vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.24);
+}
+.details-cont{
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.address {
+  background-color: rgba(0, 0, 0, 0.103);
+  padding: 10px;
+  border-radius: 10px;
+}
+@media(max-width:786px){
+    .profile-cont h2{
+        min-width: 50%;
+    }
+}

@@ -1,0 +1,32 @@
+.ProModal-cont {
+  /* border: 1px solid; */
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: var(--bgcolor);
+  display: flex;
+  justify-content: center;
+}
+.grid-modal {
+  /* border: 1px solid; */
+  overflow: scroll;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+.grid-modal::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 786px) {
+  .ProModal-cont {
+    top: 15vh;
+  }
+  .grid-modal {
+    /* border: 1px solid; */
+    min-height: 83vh;
+    max-height: 83vh;
+  }
+}
