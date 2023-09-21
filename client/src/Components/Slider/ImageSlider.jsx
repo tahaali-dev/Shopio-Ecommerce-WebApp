@@ -7,7 +7,6 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Calculate the next index, looping back to 0 when at the end
       const nextIndex = (currentIndex + 1) % images.length;
       setCurrentIndex(nextIndex);
     }, 2000);

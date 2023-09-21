@@ -28,5 +28,6 @@
     /* border: 1px solid; */
     min-height: 83vh;
     max-height: 83vh;
+    grid-template-columns: 1fr 1fr !important;
   }
 }

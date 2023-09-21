@@ -73,7 +73,9 @@ const Navbar = () => {
         </div>
         {/* Div-3 */}
         <div className="div-3">
-          <Link className="link-d">Products</Link>
+          <Link to="/allproduct" className="link-d">
+            Products
+          </Link>
           <Link className="link-d">Categories</Link>
           <Link className="link-d">Support</Link>
         </div>

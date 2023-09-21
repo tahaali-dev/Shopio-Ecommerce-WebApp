@@ -11,7 +11,7 @@ const Homepage = () => {
       <div className="min-height-80">
         <ImageSlider />
         <Category />
-        <CardSection/>
+        {/* <CardSection/> */}
       </div>
       <Footer />
     </div>

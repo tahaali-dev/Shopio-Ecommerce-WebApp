@@ -3,18 +3,26 @@ import "./ProModal.css";
 import { useQuery } from "react-query";
 import { getAllProducts } from "../../Apis/ProductApis";
 
-const ProductModal = () => {
+const ProductModal = ({ searchdata }) => {
   //Getting Products from Backend-------
   const { data } = useQuery("allproducts", getAllProducts);
   console.log(data);
   const baseURL = "http://localhost:3000/"; //Url For image
+
+  //Search filter-------
+  const filteredProducts = data.filter((product) => {
+    const searchRegex = new RegExp(searchdata, "i"); // Case-insensitive search
+    return (
+      searchRegex.test(product.name) || searchRegex.test(product.description)
+    );
+  });
 
   return (
     <div className="ProModal-cont">
       {/* Card Grid------------------  */}
       <div className="card-grid grid-modal">
         {/* Card--------------------- */}
-        {data?.map((item, i) => {
+        {filteredProducts?.map((item, i) => {
           return (
             <div key={i} className="ProductCard">
               <img src={`${baseURL}${item.image}`} alt="image" />
