@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 // ------------------Imports----------------------------
 export const apiUrl = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://e-commerce-server-f8m6.onrender.com",
 });
 
 //User Register-------------------------------
