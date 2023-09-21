@@ -3,7 +3,7 @@ import "./Slider.css";
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["/public/thub1.jpg", "/public/thub2.jpg", "/public/img3.jpg"];
+  const images = ["/thub1.jpg", "/thub2.jpg", "/img3.jpg"];
 
   useEffect(() => {
     const timer = setInterval(() => {
