@@ -106,7 +106,9 @@ const Navbar = () => {
         {/* Menu Mobile */}
         <div className={menu}>
           <div className="mobile-menu-link-cont">
-            <Link className="link-d">Products</Link>
+            <Link to="/allproduct" className="link-d">
+              Products
+            </Link>
             <Link className="link-d">Categories</Link>
           </div>
         </div>

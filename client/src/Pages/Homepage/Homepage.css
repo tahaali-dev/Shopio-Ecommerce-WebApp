@@ -1,0 +1,25 @@
+.main-cont {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.main-cont h2 {
+  /* border: 1px solid; */
+  width: 94%;
+  padding: 10px 0px;
+}
+
+.gridproduct-section {
+  /* border: 1px solid; */
+  min-width: 94vw;
+  max-width: 94vw;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+@media (max-width: 786px) {
+  .gridproduct-section {
+    min-width: 95vw;
+    grid-template-columns: 1fr 1fr;
+  }
+}

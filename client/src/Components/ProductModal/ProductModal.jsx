@@ -7,7 +7,7 @@ const ProductModal = ({ searchdata }) => {
   //Getting Products from Backend-------
   const { data } = useQuery("allproducts", getAllProducts);
   console.log(data);
-  const baseURL = "http://localhost:3000/"; //Url For image
+  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   //Search filter-------
   const filteredProducts = data.filter((product) => {

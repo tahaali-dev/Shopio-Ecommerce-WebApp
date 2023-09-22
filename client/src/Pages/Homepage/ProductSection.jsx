@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getAllProducts } from "../../Apis/ProductApis";
+import "./Homepage.css";
+//Imports-------------
 
 const ProductSection = () => {
   //Getting Products from Backend-------
@@ -8,9 +10,10 @@ const ProductSection = () => {
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   return (
-    <div>
+    <div className="main-cont">
+      <h2>Trending Products</h2>
       {/* Card Grid------------------  */}
-      <div className="card-grid">
+      <div className="card-grid gridproduct-section">
         {/* Card--------------------- */}
         {data?.map((item, i) => {
           return (
