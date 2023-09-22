@@ -315,6 +315,9 @@
   align-items: center;
   text-transform: capitalize;
 }
+.content h3:hover {
+  color: rgb(0, 38, 255);
+}
 .content p {
   /* border: 1px solid; */
   font-size: 15px;
@@ -336,32 +339,32 @@
   min-height: 100%;
   display: flex;
   align-items: center;
-  color: rgba(0, 0, 0, 0.575);
   font-family: var(--font1);
 }
 
 .card-btn {
   padding: 3px 10px;
-  /* min-height: 100%; */
-  /* max-height: 100%; */
+  min-height: 4vh;
+  max-height: 4vh;
   border: none;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.178);
+  background-color: lightgrey;
   font-family: var(--font1);
+  border-radius: 5px;
 }
 .card-btn:hover {
   background-color: rgba(0, 0, 0, 0.507);
   color: white;
   transition: 0.2s all ease-in-out;
 }
-.btn-container{
+.btn-container {
   /* border: 1px solid; */
   min-width: 90%;
   display: flex;
   max-width: 100%;
-justify-content: space-between;
+  justify-content: space-between;
 }
-.width-cont{
+.width-cont {
   max-width: 47%;
   min-width: 47%;
   text-align: center;

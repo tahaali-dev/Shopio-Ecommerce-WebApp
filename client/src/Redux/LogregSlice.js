@@ -10,6 +10,7 @@ const Userslice = createSlice({
     showlogreg: "",
     user: user ? user : null,
     token: token ? token : null,
+    category: "",
   },
   reducers: {
     Setclose: (state, action) => {
@@ -21,8 +22,15 @@ const Userslice = createSlice({
     storeUser: (state, action) => {
       state.user = action.payload;
     },
+    StoreToken: (state, action) => {
+      state.token = action.payload;
+    },
+    categoryset: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { Setclose, showlogreg, storeUser } = Userslice.actions;
+export const { Setclose, showlogreg, storeUser, categoryset, StoreToken } =
+  Userslice.actions;
 export const Userreducer = Userslice.reducer;

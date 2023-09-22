@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Setclose, showlogreg, storeUser } from "../../Redux/LogregSlice";
+import {
+  Setclose,
+  StoreToken,
+  showlogreg,
+  storeUser,
+} from "../../Redux/LogregSlice";
 import { RxCross1 } from "react-icons/rx";
 import { useMutation, useQueryClient } from "react-query";
 import { UserRegister } from "../../Apis/Apis.js";
@@ -26,6 +31,7 @@ const Register = () => {
     if (response.data.success) {
       dispatch(Setclose(false));
       dispatch(storeUser(response.data.user));
+      dispatch(StoreToken(response.data.token));
     }
     return response;
   });

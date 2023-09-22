@@ -126,7 +126,7 @@ export const DeleteProducts = async (id) => {
   }
 };
 
-//Get All Products---------------
+//Get filter Products---------------
 export const FilterProducts = async ({ categoryIds, priceRange }) => {
   try {
     const response = await apiUrl.post("/product/product-filters", {
@@ -135,6 +135,24 @@ export const FilterProducts = async ({ categoryIds, priceRange }) => {
     });
     if (response.data.success) {
       return response.data.products;
+    } else {
+      toast.error(response.data.message, "error in get api");
+      console.log(response.data.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+    throw error;
+  }
+};
+
+//Get Single Products---------------
+export const getSingleProducts = async (slug) => {
+  console.log(slug);
+  try {
+    const response = await apiUrl.get(`product/Singleproduct/${slug}`);
+    console.log(response, "response in Api");
+    if (response.data.success) {
+      return response.data.product;
     } else {
       toast.error(response.data.message, "error in get api");
       console.log(response.data.message);

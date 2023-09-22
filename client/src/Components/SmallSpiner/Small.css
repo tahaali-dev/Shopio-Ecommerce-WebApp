@@ -1,0 +1,10 @@
+.Small-cont{
+    /* border: 1px solid white; */
+    max-height: 4vh;
+    min-height: 4vh;
+}
+.Small-cont img{
+    /* border: 1px solid white; */
+    max-height: 5vh !important;
+    min-height: 5vh !important;
+}

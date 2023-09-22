@@ -5,7 +5,7 @@ import { BsMinecartLoaded, BsSearch } from "react-icons/bs";
 import { RiAccountPinCircleFill, RiMenu4Line } from "react-icons/ri";
 import LogReg from "../Log-Reg/LogReg";
 import { useDispatch, useSelector } from "react-redux";
-import { Setclose, storeUser } from "../../Redux/LogregSlice";
+import { Setclose, StoreToken, storeUser } from "../../Redux/LogregSlice";
 import toast from "react-hot-toast";
 import ProductModal from "../ProductModal/ProductModal";
 //Imports-----------------
@@ -44,6 +44,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     dispatch(storeUser());
+    dispatch(StoreToken());
     toast.success("Logged Out");
     navigate("/");
   };

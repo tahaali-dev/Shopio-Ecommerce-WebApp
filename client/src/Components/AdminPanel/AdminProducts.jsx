@@ -4,6 +4,7 @@ import { getAllCats } from "../../Apis/CategoryApis";
 import { useSelector } from "react-redux";
 import { CreateProduct } from "../../Apis/ProductApis.js";
 import AllProductsAdmin from "./AllProducts";
+import SmallSpinner from "../SmallSpiner/SmallSpinner";
 //Imports --------------
 
 const AdminProducts = () => {
@@ -18,6 +19,7 @@ const AdminProducts = () => {
   //running Query For get Categories
   const { data } = useQuery("getcategory", getAllCats);
   const Token = useSelector((state) => state.app.token);
+  console.log(Token);
   const datasend = {
     name,
     description,
@@ -58,7 +60,6 @@ const AdminProducts = () => {
 
         <form
           onSubmit={HandleCreate}
-          encType="multipart/form-data"
           method="post"
         >
           <input
@@ -122,12 +123,13 @@ const AdminProducts = () => {
             </label>
           </div>
           {Createmutation.isLoading ? (
-            <button className="submit-btn">Loading</button>
+            <button className="submit-btn"><SmallSpinner/></button>
           ) : (
             <button type="submit" className="submit-btn">
               Submit
             </button>
           )}
+            
         </form>
       </section>
 

@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Setclose, showlogreg, storeUser } from "../../Redux/LogregSlice";
+import {
+  Setclose,
+  StoreToken,
+  showlogreg,
+  storeUser,
+} from "../../Redux/LogregSlice";
 import { RxCross1 } from "react-icons/rx";
 import { useMutation } from "react-query";
 import { UserLogin } from "../../Apis/Apis";
@@ -24,6 +29,7 @@ const Login = () => {
     if (response.data.success) {
       dispatch(Setclose(false));
       dispatch(storeUser(response.data.user));
+      dispatch(StoreToken(response.data.token));
     }
     return response;
   });

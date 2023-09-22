@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { getAllProducts } from "../../Apis/ProductApis";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 //Imports-------------------
 
 const ProductSection = () => {
@@ -10,6 +11,7 @@ const ProductSection = () => {
   //Getting Products from Backend-------
   const { data } = useQuery("allproducts", getAllProducts);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const categorySet = useSelector((state) => state.app.category);
 
   //Handle Single Product
   const HandleSinglePage = (slug) => {
@@ -17,32 +19,63 @@ const ProductSection = () => {
     navigate(`/singleproduct/${slug}`);
   };
 
+  //Filter Data According To Category----
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  console.log(filteredProducts, "filter");
+  console.log(categorySet);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      // Filter products based on categorySet
+      const lowerCasecategorySet = categorySet.toLowerCase();
+
+      const filtered = data.filter((product) => {
+        const productMatchesSearch =
+          product.name.toLowerCase().includes(lowerCasecategorySet) ||
+          product.description.toLowerCase().includes(lowerCasecategorySet) ||
+          product.slug.toLowerCase().includes(lowerCasecategorySet);
+
+        const categoryMatchesSearch =
+          product.Category &&
+          (product.Category.name.toLowerCase().includes(lowerCasecategorySet) ||
+            product.Category.slug.toLowerCase().includes(lowerCasecategorySet));
+
+        return productMatchesSearch || categoryMatchesSearch;
+      });
+      setFilteredProducts(filtered);
+    }
+  }, [data, categorySet]);
+
   //Load More-------------------
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
   const productsPerPage = 10;
 
   useEffect(() => {
-    if (Array.isArray(data) && data.length > 0) {
-      const newVisibleProducts = data.slice(0, productsPerPage);
+    if (Array.isArray(filteredProducts) && filteredProducts.length > 0) {
+      const newVisibleProducts = filteredProducts.slice(0, productsPerPage);
       setVisibleProducts(newVisibleProducts);
-      setLoadMoreVisible(data.length > productsPerPage);
+      setLoadMoreVisible(filteredProducts.length > productsPerPage);
     }
-  }, [data, productsPerPage]);
+  }, [filteredProducts, productsPerPage]);
 
   const handleLoadMore = () => {
-    if (Array.isArray(data) && data.length > 0) {
-      const newVisibleProducts = data.slice(
+    if (Array.isArray(filteredProducts) && filteredProducts.length > 0) {
+      const newVisibleProducts = filteredProducts.slice(
         visibleProducts.length,
         visibleProducts.length + productsPerPage
       );
       setVisibleProducts([...visibleProducts, ...newVisibleProducts]);
 
-      if (visibleProducts.length + newVisibleProducts.length >= data.length) {
+      if (
+        visibleProducts.length + newVisibleProducts.length >=
+        filteredProducts.length
+      ) {
         setLoadMoreVisible(false);
       }
     }
   };
+  console.log(visibleProducts, "visilbe");
 
   //Jsx Return----------------
   return (
@@ -53,14 +86,12 @@ const ProductSection = () => {
         {/* Card--------------------- */}
         {visibleProducts?.map((item, i) => {
           return (
-            <div
-              key={i}
-              className="ProductCard"
-              onClick={() => HandleSinglePage(item.slug)}
-            >
+            <div key={i} className="ProductCard">
               <img src={`${baseURL}${item.image}`} alt="image" />
               <div className="content">
-                <h3>{item.name.slice(0, 50)}...</h3>
+                <h3 onClick={() => HandleSinglePage(item.slug)}>
+                  {item.name.slice(0, 50)}...
+                </h3>
                 <p>{item.description.slice(0, 50)}...</p>
 
                 <div className="priceCont">
