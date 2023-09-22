@@ -50,7 +50,6 @@ const AdminProducts = () => {
     Createmutation.mutate(datasend);
   };
 
- 
   //Jsx Return------------
   return (
     <div className="admin-pro-cont">
@@ -122,10 +121,13 @@ const AdminProducts = () => {
               />
             </label>
           </div>
-
-          <button type="submit" className="submit-btn">
-            Submit
-          </button>
+          {Createmutation.isLoading ? (
+            <button className="submit-btn">Loading</button>
+          ) : (
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          )}
         </form>
       </section>
 
