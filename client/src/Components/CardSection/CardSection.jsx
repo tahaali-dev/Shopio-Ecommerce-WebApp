@@ -9,7 +9,7 @@ import { Prices } from "../../Utils/Price.js";
 const CardSection = () => {
   //Getting Products from Backend-------
   const { data } = useQuery("allproducts", getAllProducts);
-  const baseURL = "http://localhost:3000/"; //Url For image
+  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   // Query To Get All Categories
   const Category = useQuery("getCategory", getAllCats);
