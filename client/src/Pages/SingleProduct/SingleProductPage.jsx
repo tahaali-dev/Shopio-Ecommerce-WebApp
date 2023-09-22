@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Single.css";
 import { useMutation, useQuery } from "react-query";
 import { getSingleProducts } from "../../Apis/ProductApis";
@@ -9,10 +9,9 @@ const SingleProductPage = () => {
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   // Handle SingleProductFetch
-  const { data } = useQuery("getSingleProduct", async () =>
+  const { data } = useQuery("SingleProduct", async () =>
     getSingleProducts(slug)
   );
-
   console.log(data);
 
   return (
@@ -21,16 +20,16 @@ const SingleProductPage = () => {
       <section className="top-single">
         {/* left */}
         <div className="top-left">
-          <img src={`${baseURL}${data.image}`} alt="image" />
+          <img src={`${baseURL}${data?.image}`} alt="image" />
         </div>
 
         {/* Right */}
         <div className="top-right">
-          <h2>{data.name}</h2>
-          <h3>${data.price}</h3>
-          <p className="description">{data.description}</p>
-          <p className="other-p">Stock Available : {data.quantity}pcs</p>
-          <p className="other-p">Category Name : {data.Category.name}</p>
+          <h2>{data?.name}</h2>
+          <h3>${data?.price}</h3>
+          <p className="description">{data?.description}</p>
+          <p className="other-p">Stock Available : {data?.quantity}pcs</p>
+          <p className="other-p">Category Name : {data?.Category.name}</p>
           <div className="btn-cont-single">
             <button className="add-to-cart-btn">Add to Cart</button>
           </div>
