@@ -9,7 +9,9 @@ const SingleProductPage = () => {
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   // Handle SingleProductFetch
-  const { data } = useQuery("getSingleProduct", () => getSingleProducts(slug));
+  const { data } = useQuery("getSingleProduct", async () =>
+    getSingleProducts(slug)
+  );
 
   console.log(data);
 
@@ -19,7 +21,7 @@ const SingleProductPage = () => {
       <section className="top-single">
         {/* left */}
         <div className="top-left">
-          {/* <img src={`${baseURL}${data.image}`} alt="image" /> */}
+          <img src={`${baseURL}${data.image}`} alt="image" />
         </div>
 
         {/* Right */}
