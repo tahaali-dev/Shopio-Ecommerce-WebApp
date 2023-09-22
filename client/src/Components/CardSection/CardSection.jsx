@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "react-query";
 import { FilterProducts, getAllProducts } from "../../Apis/ProductApis.js";
 import { getAllCats } from "../../Apis/CategoryApis";
 import { Prices } from "../../Utils/Price.js";
+import { useNavigate } from "react-router-dom";
 //Imports-------------------
 
 const CardSection = () => {
@@ -80,6 +81,13 @@ const CardSection = () => {
     }
   };
 
+  //Handle Single Product
+  const navigate = useNavigate();
+  const HandleSinglePage = (slug) => {
+    console.log(slug);
+    navigate(`/singleproduct/${slug}`);
+  };
+
   return (
     <div className="card-cont">
       <h2>Products</h2>
@@ -137,7 +145,7 @@ const CardSection = () => {
           {/* Card--------------------- */}
           {visibleProducts?.map((item, i) => {
             return (
-              <div key={i} className="ProductCard">
+              <div key={i} className="ProductCard" onClick={HandleSinglePage}>
                 <img src={`${baseURL}${item.image}`} alt="image" />
                 <div className="content">
                   <h3>{item.name.slice(0, 50)}...</h3>

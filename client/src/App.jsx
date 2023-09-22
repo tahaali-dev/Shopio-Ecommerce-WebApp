@@ -7,6 +7,7 @@ import PolicyPage from "./Pages/PolicyPage/PolicyPage";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./Pages/dashboard/Dashboard";
 import ProductPage from "./Pages/ProductPage/ProductPage";
+import SingleProductPage from "./Pages/SingleProduct/SingleProductPage";
 //Imports ----------------
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/aboutpage" element={<Aboutpage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/allproduct" element={<ProductPage />} />
+          <Route path="/singleproduct/:slug" element={<SingleProductPage />} />
           <Route path="/contactpage" element={<Contactpage />} />
           <Route path="/policypage" element={<PolicyPage />} />
         </Route>

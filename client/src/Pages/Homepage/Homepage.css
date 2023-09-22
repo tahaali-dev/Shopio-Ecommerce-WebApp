@@ -13,9 +13,9 @@
 
 .gridproduct-section {
   /* border: 1px solid; */
-  min-width: 94vw;
-  max-width: 94vw;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  min-width: 94vw !important;
+  max-width: 94vw !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
 }
 @media (max-width: 786px) {
   .gridproduct-section {
