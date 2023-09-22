@@ -19,7 +19,7 @@ const SingleProductPage = () => {
       <section className="top-single">
         {/* left */}
         <div className="top-left">
-          <img src={`${baseURL}${data.image}`} alt="image" />
+          {/* <img src={`${baseURL}${data.image}`} alt="image" /> */}
         </div>
 
         {/* Right */}
