@@ -1,0 +1,119 @@
+.cart-main {
+  display: flex;
+  justify-content: center;
+}
+.cart-main section {
+  /* border: 1px solid; */
+  min-width: 85vw;
+  max-width: 85vw;
+  min-height: 80vh;
+}
+.cart-display-sec {
+  /* border: 1px solid brown; */
+  min-width: 50%;
+  max-width: 50%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-display-sec h2 {
+  /* border: 1px solid; */
+  font-size: 20px;
+  margin: 5px 0px;
+  min-width: 85%;
+}
+.card-card-cont {
+  /* border: 1px solid; */
+  min-width: 85%;
+  max-width: 85%;
+  display: flex;
+  max-height: 70vh;
+  min-height: 12vh;
+  overflow-y: scroll;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}
+.card-card-cont::-webkit-scrollbar {
+  display: none;
+}
+.cart-card {
+  /* border: 1px solid; */
+  min-width: 90%;
+  min-height: 11vh;
+  max-height: 11vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.336);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.cart-card img {
+  /* border: 1px solid; */
+  min-width: 10%;
+  max-width: 10%;
+  min-height: 8vh;
+  max-height: 8vh;
+  border-radius: 50%;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.price-tit {
+  /* border: 1px solid; */
+  min-width: 50%;
+  max-width: 50%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.product-count-cont {
+  /* border: 1px solid; */
+  display: flex;
+  min-width: 20%;
+  max-width: 20%;
+  justify-content: space-between;
+}
+.product-count-cont button {
+  min-width: 25%;
+  cursor: pointer;
+}
+.dlt-cart {
+  /* border: 1px solid; */
+  min-height: 4.5vh;
+  max-height: 4.5vh;
+  min-width: 10%;
+  max-width: 10%;
+  margin-right: 10px;
+  /* font-size: 20px; */
+  cursor: pointer;
+}
+
+@media (max-width: 786px) {
+  .cart-main section {
+    /* border: 1px solid; */
+    min-width: 95vw;
+    max-width: 95vw;
+  }
+  .cart-display-sec {
+    /* border: 1px solid; */
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 70vh;
+  }
+.card-card-cont{
+  /* border: 1px solid; */
+  min-width: 100%;
+}  
+.cart-card{
+  /* border: 1px solid; */
+}
+.cart-card img{
+  /* border: 1px solid; */
+  min-height: 7vh;
+  min-width: 13%;
+  margin: 0px;
+}
+}

@@ -3,7 +3,9 @@ import { useQuery } from "react-query";
 import { getAllProducts } from "../../Apis/ProductApis";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { storeCart } from "../../Redux/LogregSlice";
+import { addToCart } from "../../Redux/cart";
 //Imports-------------------
 
 const ProductSection = () => {
@@ -15,14 +17,14 @@ const ProductSection = () => {
 
   //Handle Single Product
   const HandleSinglePage = (slug) => {
-    console.log(slug);
+    // console.log(slug);
     navigate(`/singleproduct/${slug}`);
   };
 
   //Filter Data According To Category----
   const [filteredProducts, setFilteredProducts] = useState([]);
-  console.log(filteredProducts, "filter");
-  console.log(categorySet);
+  // console.log(filteredProducts, "filter");
+  // console.log(categorySet);
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -75,7 +77,14 @@ const ProductSection = () => {
       }
     }
   };
-  console.log(visibleProducts, "visilbe");
+
+  //Add To Cart------Handle
+  const dispatch = useDispatch();
+  const AddToCartHandle = (item) => {
+    dispatch(addToCart(item));
+    navigate("/cartpage");
+  };
+
 
   //Jsx Return----------------
   return (
@@ -96,7 +105,12 @@ const ProductSection = () => {
 
                 <div className="priceCont">
                   <h4>${item.price.slice(0, 10)}</h4>
-                  <button className="card-btn">Add To Cart</button>
+                  <button
+                    className="card-btn"
+                    onClick={() => AddToCartHandle(item)}
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             </div>

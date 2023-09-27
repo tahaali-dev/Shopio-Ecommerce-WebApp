@@ -41,7 +41,6 @@ const CardSection = () => {
     async ({ categoryIds, priceRange }) => {
       const response = await FilterProducts({ categoryIds, priceRange });
       setFilterData(response);
-      console.log(response);
       return response;
     }
   );
@@ -84,10 +83,13 @@ const CardSection = () => {
   //Handle Single Product
   const navigate = useNavigate();
   const HandleSinglePage = (slug) => {
-    console.log(slug);
+    // console.log("clicked");
+    // console.log(slug);
     navigate(`/singleproduct/${slug}`);
   };
 
+
+console.log(data);
   return (
     <div className="card-cont">
       <h2>Products</h2>
@@ -145,7 +147,7 @@ const CardSection = () => {
           {/* Card--------------------- */}
           {visibleProducts?.map((item, i) => {
             return (
-              <div key={i} className="ProductCard" onClick={HandleSinglePage}>
+              <div key={i} className="ProductCard" onClick={()=>HandleSinglePage(item.slug)}>
                 <img src={`${baseURL}${item.image}`} alt="image" />
                 <div className="content">
                   <h3>{item.name.slice(0, 50)}...</h3>

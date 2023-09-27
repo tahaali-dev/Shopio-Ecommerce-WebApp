@@ -19,7 +19,6 @@ const AdminProducts = () => {
   //running Query For get Categories
   const { data } = useQuery("getcategory", getAllCats);
   const Token = useSelector((state) => state.app.token);
-  console.log(Token);
   const datasend = {
     name,
     description,
@@ -29,7 +28,7 @@ const AdminProducts = () => {
     image,
     Token,
   };
-  console.log(datasend);
+  // console.log(datasend);
 
   //Handle File Change--------
   const handleFileChange = (e) => {

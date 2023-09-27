@@ -147,10 +147,10 @@ export const FilterProducts = async ({ categoryIds, priceRange }) => {
 
 //Get Single Products---------------
 export const getSingleProducts = async (slug) => {
-  console.log(slug);
+  // console.log(slug);
   try {
     const response = await apiUrl.get(`product/Singleproduct/${slug}`);
-    console.log(response, "response in Api");
+    // console.log(response, "response in Api");
     if (response.data.success) {
       return response.data.product;
     } else {

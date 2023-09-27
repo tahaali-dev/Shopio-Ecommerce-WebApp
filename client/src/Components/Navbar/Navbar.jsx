@@ -96,7 +96,7 @@ const Navbar = () => {
             </>
           )}
 
-          <Link className="link-cart">
+          <Link to="/cartpage" className="link-cart">
             <BsMinecartLoaded />
           </Link>
           <Link to="/dashboard" className="link-cart">

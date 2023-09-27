@@ -10,6 +10,7 @@ import { AiFillEdit } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { getAllCats } from "../../Apis/CategoryApis.js";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 //Imoports----------------
 
 const AllProductsAdmin = () => {
@@ -84,6 +85,14 @@ const AllProductsAdmin = () => {
     // }
   };
 
+   //Handle Single Product
+   const navigate = useNavigate();
+   const HandleSinglePage = (slug) => {
+     console.log("clicked");
+     // console.log(slug);
+     navigate(`/singleproduct/${slug}`);
+   };
+
   // JSx Return--------------------
   return (
     <section className="All-product">
@@ -92,7 +101,7 @@ const AllProductsAdmin = () => {
           <div key={i} className="ProductCard">
             <img src={`${baseURL}${item.image}`} alt="image" />
             <div className="content">
-              <h3>{item.name.slice(0, 50)}...</h3>
+            <h3 onClick={()=>HandleSinglePage(item.slug)}>{item.name.slice(0, 50)}...</h3>
               <p>{item.description.slice(0, 50)}...</p>
 
               <div className="priceCont">

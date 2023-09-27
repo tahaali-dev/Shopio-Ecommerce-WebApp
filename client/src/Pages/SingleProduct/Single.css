@@ -10,7 +10,6 @@
   /* border: 1px solid; */
   margin-top: 10px;
   min-width: 85vw;
-  min-width: 85vw;
   max-width: 85vw;
   display: flex;
 }
@@ -107,7 +106,20 @@
   transform: scale(1.05);
   transition: 0.1s ease-in-out;
 }
+.similar-sec{
+  /* border: 1px solid; */
+  margin: 15px 0px;
+  min-width: 85vw;
+  max-width: 85vw;
+}
+.similar-sec h2{
+  margin: 5px 0px;
+}
 
+.similargrid{
+  /* border: 1px solid; */
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+}
 @media (max-width: 786px) {
   .top-single {
     flex-direction: column;
