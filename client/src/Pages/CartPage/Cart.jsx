@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./cart.css";
+import "./Cart.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCart } from "../../Redux/LogregSlice";
-import { toast } from "react-hot-toast";
+
 import {
   addToCart,
   decreaseCart,
