@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Single.css";
 import { useMutation, useQuery } from "react-query";
 import { getAllProducts, getSingleProducts } from "../../Apis/ProductApis";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSimilar } from "../../Redux/LogregSlice";
+import { addToCart } from "../../Redux/cart";
 //Imports----------------------------------------------
 
 const SingleProductPage = () => {
@@ -18,6 +19,7 @@ const SingleProductPage = () => {
   const { data, isLoading } = useQuery("SingleProduct", async () =>
     getSingleProducts(slug)
   );
+  console.log(data);
 
   //filter Similar Products-----------
   useEffect(() => {
@@ -35,6 +37,13 @@ const SingleProductPage = () => {
 
   const similar = useSelector((state) => state.app.similar);
   // console.log(similar);`
+
+  //Add To Cart------Handle
+  const navigate = useNavigate();
+  const AddToCartHandle = (item) => {
+    dispatch(addToCart(item));
+    navigate("/cartpage");
+  };
 
   //Logs For testing
   // console.log(Allproducts.data, "Allproducts on single page");
@@ -62,7 +71,12 @@ const SingleProductPage = () => {
               <p className="other-p">Stock Available : {data?.quantity}pcs</p>
               <p className="other-p">Category Name : {data?.Category.name}</p>
               <div className="btn-cont-single">
-                <button className="add-to-cart-btn">Add to Cart</button>
+                <button
+                  className="add-to-cart-btn"
+                  onClick={() => AddToCartHandle(data)}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </section>
@@ -71,7 +85,7 @@ const SingleProductPage = () => {
 
       {/* Similar Products Section*/}
       <section className="similar-sec">
-      <h2>Similar Products</h2>
+        <h2>Similar Products</h2>
         {/* Card Grid------------------  */}
         <div className="card-grid similargrid">
           {/* Card--------------------- */}

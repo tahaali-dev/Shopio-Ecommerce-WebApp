@@ -7,6 +7,8 @@ const initialState = {
     : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
+  cartdiscount: 0,
+  amountAfterDiscount: 0,
 };
 
 const cartSlice = createSlice({
@@ -92,6 +94,9 @@ const cartSlice = createSlice({
       total = parseFloat(total.toFixed(2));
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
+      //Discount
+      state.cartdiscount = (10 * total) / 100;
+      state.amountAfterDiscount = total - state.cartdiscount;
     },
     clearCart(state, action) {
       state.cartItems = [];

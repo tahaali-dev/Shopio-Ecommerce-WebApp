@@ -5,6 +5,8 @@ import { FilterProducts, getAllProducts } from "../../Apis/ProductApis.js";
 import { getAllCats } from "../../Apis/CategoryApis";
 import { Prices } from "../../Utils/Price.js";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Redux/cart";
 //Imports-------------------
 
 const CardSection = () => {
@@ -88,8 +90,13 @@ const CardSection = () => {
     navigate(`/singleproduct/${slug}`);
   };
 
+  //Add To Cart------Handle
+  const dispatch = useDispatch();
+  const AddToCartHandle = (item) => {
+    dispatch(addToCart(item));
+    navigate("/cartpage");
+  };
 
-console.log(data);
   return (
     <div className="card-cont">
       <h2>Products</h2>
@@ -147,15 +154,22 @@ console.log(data);
           {/* Card--------------------- */}
           {visibleProducts?.map((item, i) => {
             return (
-              <div key={i} className="ProductCard" onClick={()=>HandleSinglePage(item.slug)}>
+              <div key={i} className="ProductCard">
                 <img src={`${baseURL}${item.image}`} alt="image" />
                 <div className="content">
-                  <h3>{item.name.slice(0, 50)}...</h3>
+                  <h3 onClick={() => HandleSinglePage(item.slug)}>
+                    {item.name.slice(0, 50)}...
+                  </h3>
                   <p>{item.description.slice(0, 50)}...</p>
 
                   <div className="priceCont">
                     <h4>${item.price.slice(0, 10)}</h4>
-                    <button className="card-btn">Add To Cart</button>
+                    <button
+                      className="card-btn"
+                      onClick={() => AddToCartHandle(item)}
+                    >
+                      Add To Cart
+                    </button>
                   </div>
                 </div>
               </div>
