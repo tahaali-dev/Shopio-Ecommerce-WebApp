@@ -101,10 +101,12 @@ const ProductSection = () => {
                 <h3 onClick={() => HandleSinglePage(item.slug)}>
                   {item.name.slice(0, 50)}...
                 </h3>
-                <p>{item.description.slice(0, 50)}...</p>
+                <div className="price-quantity">
+                    <p>Left : {item.quantity}pcs</p>
+                    <h4>${item.price.slice(0, 10)}</h4>
+                  </div>
 
                 <div className="priceCont">
-                  <h4>${item.price.slice(0, 10)}</h4>
                   <button
                     className="card-btn"
                     onClick={() => AddToCartHandle(item)}

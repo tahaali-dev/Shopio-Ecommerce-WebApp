@@ -9,11 +9,15 @@ import {
   getTotals,
   removeFromCart,
 } from "../../Redux/cart";
+import { Link } from "react-router-dom";
+import { Setclose } from "../../Redux/LogregSlice";
+//Imports --------------------
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const user = useSelector((state) => state.app.user);
 
   //-------------------------------------
 
@@ -33,6 +37,17 @@ const Cart = () => {
   };
   const handleDecreaseCart = (product) => {
     dispatch(decreaseCart(product));
+  };
+
+  //Handle Login Register From
+  //Redux State For Login Form
+  const OpClController = useSelector((state) => state.app.closelogin);
+
+  const handleLogReg = () => {
+    if (OpClController === false) {
+      dispatch(Setclose(true));
+      // setLogcont(false);
+    }
   };
 
   return (
@@ -74,31 +89,41 @@ const Cart = () => {
 
         {/* cart total and checkout section */}
         <div className="checkout-sec">
-          <div className="inner-sec">
-            <h2>Checkout Now </h2>
-            <img src="/del.gif" alt="" />
-            <div>
-              <p>Total items</p>
-              <h4>{cart.cartTotalQuantity}pcs</h4>
-            </div>
+          {user && user ? (
+            <div className="inner-sec">
+              <h2>Checkout Now </h2>
+              <img src="/del.gif" alt="" />
+              <div>
+                <p>Total items</p>
+                <h4>{cart.cartTotalQuantity}pcs</h4>
+              </div>
 
-            <div>
-              <p>Total Amount</p>
-              <h4>${cart.cartTotalAmount}</h4>
-            </div>
+              <div>
+                <p>Total Amount</p>
+                <h4>${cart.cartTotalAmount}</h4>
+              </div>
 
-            <div>
-              <p>Total Discount</p>
-              <span>
-                <h4>10%</h4>
-                <h4>${cart.cartdiscount}</h4>
-              </span>
-            </div>
+              <div>
+                <p>Total Discount</p>
+                <span>
+                  <h4>10%</h4>
+                  <h4>${cart.cartdiscount}</h4>
+                </span>
+              </div>
 
-            <button className="cart-btn">
-              Pay ${cart.amountAfterDiscount}
-            </button>
-          </div>
+              <button className="cart-btn">
+                Pay ${cart.amountAfterDiscount}
+              </button>
+            </div>
+          ) : (
+            <div className="not-user">
+              <p>login first to Checkout</p>
+
+              <Link className="link-d btn1" onClick={handleLogReg}>
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     </div>

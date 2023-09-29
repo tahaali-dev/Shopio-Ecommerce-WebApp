@@ -3,12 +3,14 @@
   max-height: 41vh;
   display: flex;
   justify-content: center;
+  /* min-width: ; */
 }
 
 .image-slider img {
   /* border: 1px solid; */
   max-height: 40vh;
   min-height: 40vh;
-  max-width: 100%;
-  min-width: 100%;
+  max-width: 92%;
+  min-width: 92%;
+  border-radius: 10px;
 }

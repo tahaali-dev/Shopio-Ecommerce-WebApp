@@ -272,15 +272,15 @@
   gap: 10px;
 }
 .ProductCard {
-  /* border: 1px solid; */
+  /* border: 1px solid;   */
   min-width: 18vw;
   max-width: 18vw;
-  min-height: 60vh;
-  max-height: 60vh;
+  min-height: 58vh;
+  max-height: 58vh;
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  border-radius: 3px;
+  border-radius: 7px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -318,14 +318,13 @@
 .content h3:hover {
   color: rgb(0, 38, 255);
 }
-.content p {
+
+.price-quantity {
   /* border: 1px solid; */
-  font-size: 15px;
-  min-height: 8vh;
-  max-height: 8vh;
   display: flex;
-  justify-content: left;
-  align-items: center;
+  justify-content: space-between;
+  min-height:5vh;
+  max-height:5vh;
 }
 .priceCont {
   /* border: 1px solid; */
@@ -344,17 +343,19 @@
 
 .card-btn {
   padding: 3px 10px;
-  min-height: 4vh;
-  max-height: 4vh;
+  min-height: 6vh;
+  max-height: 6vh;
+  min-width: 100%;
   border: none;
   cursor: pointer;
-  background-color: lightgrey;
+  background-color: lawngreen;
   font-family: var(--font1);
+  font-size: 18px;
   border-radius: 5px;
 }
 .card-btn:hover {
-  background-color: rgba(0, 0, 0, 0.507);
-  color: white;
+  background-color: transparent;
+  border: 1px solid gray;
   transition: 0.2s all ease-in-out;
 }
 .btn-container {
@@ -386,5 +387,6 @@
   }
   .ProductCard img {
     min-height: 25vh;
+    max-height: 25vh;
   }
 }

@@ -16,6 +16,7 @@
   min-width: 94vw !important;
   max-width: 94vw !important;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+  margin-bottom: 10px;
 }
 @media (max-width: 786px) {
   .gridproduct-section {

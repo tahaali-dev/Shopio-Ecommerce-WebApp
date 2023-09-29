@@ -1,18 +1,21 @@
 .cat-cont {
   /* border: 1px solid; */
   margin-top: 10px;
-  min-height: 15vh;
-  max-height: 15vh;
+  min-height: 14vh;
+  max-height: 14vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
 .cat {
   border: 1px solid gainsboro;
-  border-radius: 10px;
-  min-width: 100px;
-  max-width: 100px;
+  border-radius: 7px;
+  min-width: 8vw;
+  max-width: 8vw;
+  min-height: 11vh;
+  max-height: 11vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,12 +35,19 @@
 @media (max-width: 786px) {
   .cat-cont {
     /* border: 1px solid; */
-    gap: 10;
+    gap: 7px;
     overflow-x: scroll;
     justify-content: start;
-    padding-left: 10px;
+    padding-left: 15px;
+    min-height: 11vh;
+  }
+  .cat-cont::-webkit-scrollbar{
+    display: none;
   }
   .cat {
     border: 1px solid;
+    min-width: 25vw;
+    max-width: 25vw;
+    min-height: 8vh;
   }
 }

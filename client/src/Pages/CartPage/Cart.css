@@ -159,6 +159,13 @@
   transition: 0.2s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+.not-user{
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
 @media (max-width: 786px) {
   .cart-main section {
     /* border: 1px solid; */
