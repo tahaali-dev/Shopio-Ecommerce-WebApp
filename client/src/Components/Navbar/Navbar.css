@@ -6,10 +6,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 50px;
-  backdrop-filter: blur(15px);
   position: sticky;
   top: 0;
   z-index: 2;
+  background-color: var(--bgcolor);
 }
 
 .nav-top {
@@ -128,9 +128,10 @@ input:active {
     gap: 15px;
   }
   .input-for-mobile input {
+    /* border: 1px solid; */
     padding: 10px;
-    border-radius: 10px;
-    min-width: 75%;
+    border-radius: 7px;
+    min-width: 95%;
   }
   .nav-cont {
     min-height: 15vh;
@@ -213,19 +214,8 @@ input:active {
 .link-form:hover {
   color: black;
 }
-.search-btn {
-  border: none;
-  min-width: 3vw;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: transparent;
-}
-.search-btn:hover {
-  color: green;
-}
+
+
 @media (max-width: 786px) {
   form {
     /* border: 1px solid; */

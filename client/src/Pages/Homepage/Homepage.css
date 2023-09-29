@@ -23,5 +23,6 @@
     /* border: 1px solid ; */
     min-width: 95vw !important;
     grid-template-columns: 1fr 1fr !important;
+    margin-bottom: 0px;
   }
 }

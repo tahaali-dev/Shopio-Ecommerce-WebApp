@@ -45,6 +45,8 @@ const SingleProductPage = () => {
     navigate("/cartpage");
   };
 
+  
+
   //Logs For testing
   // console.log(Allproducts.data, "Allproducts on single page");
 
@@ -100,11 +102,18 @@ const SingleProductPage = () => {
                     <img src={`${baseURL}${item.image}`} alt="image" />
                     <div className="content">
                       <h3>{item.name.slice(0, 50)}...</h3>
-                      <p>{item.description.slice(0, 50)}...</p>
+                      <div className="price-quantity">
+                        <p>Left : {item.quantity}pcs</p>
+                        <h4>${item.price.slice(0, 10)}</h4>
+                      </div>
 
                       <div className="priceCont">
-                        <h4>${item.price.slice(0, 10)}</h4>
-                        <button className="card-btn">Add To Cart</button>
+                        <button
+                          className="card-btn"
+                          onClick={() => AddToCartHandle(item)}
+                        >
+                          Add To Cart
+                        </button>
                       </div>
                     </div>
                   </div>
