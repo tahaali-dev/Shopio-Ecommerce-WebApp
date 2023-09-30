@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   addToCart,
   decreaseCart,
@@ -11,6 +11,7 @@ import {
 } from "../../Redux/cart";
 import { Link } from "react-router-dom";
 import { Setclose } from "../../Redux/LogregSlice";
+import { CheckoutProduct } from "../../Apis/ProductApis";
 //Imports --------------------
 
 const Cart = () => {
@@ -50,6 +51,14 @@ const Cart = () => {
     }
   };
 
+  //Handle CheckOut
+  // Mutations
+  const Checkoutmutation = useMutation(CheckoutProduct);
+
+  const HandleCheckout = (amount) => {
+    // console.log(amount);
+    Checkoutmutation.mutate({ amount });
+  };
   return (
     <div className="cart-main">
       <section>
@@ -92,7 +101,7 @@ const Cart = () => {
           {user && user ? (
             <div className="inner-sec">
               <h2>Checkout Now </h2>
-              <img src="/del.gif" alt="" />
+              <img src="/delivery-truck.gif" alt="truck" />
               <div>
                 <p>Total items</p>
                 <h4>{cart.cartTotalQuantity}pcs</h4>
@@ -111,7 +120,10 @@ const Cart = () => {
                 </span>
               </div>
 
-              <button className="cart-btn">
+              <button
+                className="cart-btn"
+                onClick={() => HandleCheckout(cart.amountAfterDiscount)}
+              >
                 Pay ${cart.amountAfterDiscount}
               </button>
             </div>

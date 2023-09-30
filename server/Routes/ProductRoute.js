@@ -2,10 +2,12 @@ import express from "express";
 import { isAdmin, requireSignIn } from "../MiddleWares/authMiddleware.js";
 import multer from "multer";
 import {
+  Checkout,
   CreateProduct,
   deleteProductController,
   getProductController,
   getSingleProductController,
+  paymentVerification,
   productFiltersController,
   updateProductController,
 } from "../Controllers/ProductControllers.js";
@@ -53,5 +55,16 @@ router.delete("/delete/:id", deleteProductController);
 
 //filter product
 router.post("/product-filters", productFiltersController);
+
+//CheckOut route
+router.post("/checkout", Checkout);
+router.post("/paymentverification", paymentVerification);
+
+router.get("/getkey", (req, res) => {
+  res.send({
+    message: "success",
+    key: process.env.KEYID,
+  });
+});
 
 export { router as ProductRoutes };

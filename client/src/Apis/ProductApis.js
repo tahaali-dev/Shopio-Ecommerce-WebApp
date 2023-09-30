@@ -5,6 +5,9 @@ import { toast } from "react-hot-toast";
 export const apiUrl = axios.create({
   baseURL: "https://e-commerce-server-f8m6.onrender.com",
 });
+export const apiUrltest = axios.create({
+  baseURL: "http://localhost:3000",
+});
 
 //Get All Products---------------
 export const getAllProducts = async () => {
@@ -159,6 +162,63 @@ export const getSingleProducts = async (slug) => {
     }
   } catch (error) {
     toast.error(error.message);
+    throw error;
+  }
+};
+
+// CheckOut Product---------------
+export const CheckoutProduct = async ({ amount }) => {
+  console.log(amount);
+  try {
+    const {
+      data: { order },
+    } = await apiUrltest.post(
+      "/product/checkout",
+      { amount },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const {
+      data: { key },
+    } = await apiUrltest.get("/product/getkey");
+
+    //Options
+    const options = {
+      key,
+      amount: order.amount,
+      currency: "INR",
+      name: "taha",
+      description: "Tutorial of RazorPay",
+      image: "/loading.gif",
+      order_id: order.id,
+      // callback_url: "http://localhost:3000/product/paymentverification",
+      prefill: {
+        name: "Gaurav Kumar",
+        email: "gaurav.kumar@example.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      handler: function (response) {
+        alert("Payment Succeeded");
+        window.open("/", "_self");
+      },
+      theme: {
+        color: "#121212",
+      },
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.on("payment.failed", function (response) {
+      alert("Payment Failed");
+    });
+    rzp1.open();
+  } catch (error) {
+    // toast.error(error.message);
+    console.log(error);
     throw error;
   }
 };
