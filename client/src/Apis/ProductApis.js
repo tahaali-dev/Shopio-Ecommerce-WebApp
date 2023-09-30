@@ -172,7 +172,7 @@ export const CheckoutProduct = async ({ amount }) => {
   try {
     const {
       data: { order },
-    } = await apiUrltest.post(
+    } = await apiUrl.post(
       "/product/checkout",
       { amount },
       {
@@ -183,7 +183,7 @@ export const CheckoutProduct = async ({ amount }) => {
     );
     const {
       data: { key },
-    } = await apiUrltest.get("/product/getkey");
+    } = await apiUrl.get("/product/getkey");
 
     //Options
     const options = {
