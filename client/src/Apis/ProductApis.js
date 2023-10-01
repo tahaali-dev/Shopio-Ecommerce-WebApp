@@ -207,6 +207,7 @@ export const CheckoutProduct = async ({
       notes: {
         address: user.address,
       },
+      
       handler: function (response) {
         alert("Payment Succeeded");
         localStorage.removeItem("cartItems");

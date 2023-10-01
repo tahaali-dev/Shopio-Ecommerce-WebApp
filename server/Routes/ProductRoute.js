@@ -67,6 +67,6 @@ router.get("/getkey", (req, res) => {
 });
 
 //Get User Orders Route
-router.get("/getorders/:userId" , GetUserOrders)
+router.get("/getorders/:userId", GetUserOrders);
 
 export { router as ProductRoutes };
