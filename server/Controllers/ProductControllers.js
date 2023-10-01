@@ -321,11 +321,10 @@ export const Checkout = async (req, res) => {
   };
 
   try {
-    const order = await instance.orders.create(options);
+    // const order = await instance.orders.create(options);
 
-    if (order) {
-      // Check if the payment was successful
-      if (order.status === "paid") {
+    const order = instance.orders.create(options, async (err, order) => {
+      if (!err) {
         // Create the order using Prisma
         const createdOrder = await prisma.Order.create({
           data: {
@@ -350,7 +349,7 @@ export const Checkout = async (req, res) => {
           message: "Payment was not successful",
         });
       }
-    }
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
