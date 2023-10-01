@@ -284,23 +284,25 @@ export const Checkout = async (req, res) => {
   try {
     const order = await instance.orders.create(options);
 
-    // Create the order using Prisma
-    const createdOrder = await prisma.Order.create({
-      data: {
-        products: {
-          connect: products.map((productId) => ({ id: productId })),
+    if (order) {
+      // Create the order using Prisma
+      const createdOrder = await prisma.Order.create({
+        data: {
+          products: {
+            connect: products.map((productId) => ({ id: productId })),
+          },
+          payment,
+          buyer: { connect: { id: buyerId } },
+          status,
         },
-        payment,
-        buyer: { connect: { id: buyerId } },
-        status,
-      },
-    });
+      });
 
-    res.status(200).json({
-      success: true,
-      single: order,
-      createdOrder: createdOrder,
-    });
+      res.status(200).json({
+        success: true,
+        single: order,
+        createdOrder: createdOrder,
+      });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
