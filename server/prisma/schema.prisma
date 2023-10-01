@@ -46,7 +46,7 @@ model Category {
 model Order {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
   products  Product[] // Relation to products in the order
-  payment   String
+  payment   Int
   buyer     User        @relation(fields: [buyerId], references: [id])
   buyerId   String      @db.ObjectId
   status    OrderStatus // Define enum values explicitly
