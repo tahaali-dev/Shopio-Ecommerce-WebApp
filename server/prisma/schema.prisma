@@ -16,6 +16,7 @@ model User {
   address   String
   role      Boolean  @default(false)
   createdAt DateTime @default(now())
+  Order     Order[]
 }
 
 model Product {
@@ -31,6 +32,8 @@ model Product {
   updatedAt   DateTime  @updatedAt
   Category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?   @db.ObjectId
+  Order       Order?    @relation(fields: [orderId], references: [id])
+  orderId     String?   @db.ObjectId
 }
 
 model Category {
@@ -38,4 +41,23 @@ model Category {
   name    String    @unique
   slug    String    @unique
   Product Product[]
+}
+
+model Order {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  products  Product[] // Relation to products in the order
+  payment   String
+  buyer     User        @relation(fields: [buyerId], references: [id])
+  buyerId   String      @db.ObjectId
+  status    OrderStatus // Define enum values explicitly
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  NOT_PROCESS
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELED
 }

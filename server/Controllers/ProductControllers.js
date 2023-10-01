@@ -272,10 +272,10 @@ export const productListController = async (req, res) => {
 
 //Checkout Controller
 export const Checkout = async (req, res) => {
-  const { amount } = req.body;
+  const { products, payment, buyerId, status } = req.body;
 
   var options = {
-    amount: amount * 100,
+    amount: payment * 100,
     currency: "INR",
     receipt: "order_rcptid_11",
     payment_capture: 1,
@@ -283,43 +283,48 @@ export const Checkout = async (req, res) => {
 
   try {
     const order = await instance.orders.create(options);
+
+    // Create the order using Prisma
+    const createdOrder = await prisma.Order.create({
+      data: {
+        products: {
+          connect: products.map((productId) => ({ id: productId })),
+        },
+        payment,
+        buyer: { connect: { id: buyerId } },
+        status,
+      },
+    });
+
     res.status(200).json({
       success: true,
-      order,
+      single: order,
+      createdOrder: createdOrder,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
 
-export const paymentVerification = async (req, res) => {
-  // const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-  //   req.body;
-  console.log(req.body);
-  res.send("success");
+// Get orders for a specific user with product details
+export const GetUserOrders = async (req, res) => {
+  try {
+    const userId = req.params.userId; // Extract user ID from URL parameter
 
-  // const body = razorpay_order_id + "|" + razorpay_payment_id;
+    // Query the database to retrieve orders for the specified user
+    const userOrders = await prisma.Order.findMany({
+      where: {
+        buyerId: userId,
+      },
+      include: {
+        products: true, // Include product details for each order
+      },
+    });
 
-  // const expectedSignature = crypto
-  //   .createHmac("sha256", process.env.KEYSECRET)
-  //   .update(body.toString())
-  //   .digest("hex");
-
-  // const isAuthentic = expectedSignature === razorpay_signature;
-
-  // if (isAuthentic) {
-  // // Database comes here
-
-  // await Payment.create({
-  //   razorpay_order_id,
-  //   razorpay_payment_id,
-  //   razorpay_signature,
-  // });
-
-  //   res.redirect(`http://localhost:5173/`);
-  // } else {
-  //   res.status(400).json({
-  //     success: false,
-  //   });
-  // }
+    res.status(200).json(userOrders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };

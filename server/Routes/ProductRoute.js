@@ -4,10 +4,10 @@ import multer from "multer";
 import {
   Checkout,
   CreateProduct,
+  GetUserOrders,
   deleteProductController,
   getProductController,
   getSingleProductController,
-  paymentVerification,
   productFiltersController,
   updateProductController,
 } from "../Controllers/ProductControllers.js";
@@ -58,7 +58,6 @@ router.post("/product-filters", productFiltersController);
 
 //CheckOut route
 router.post("/checkout", Checkout);
-router.post("/paymentverification", paymentVerification);
 
 router.get("/getkey", (req, res) => {
   res.send({
@@ -66,5 +65,8 @@ router.get("/getkey", (req, res) => {
     key: process.env.KEYID,
   });
 });
+
+//Get User Orders Route
+router.get("/getorders/:userId" , GetUserOrders)
 
 export { router as ProductRoutes };
