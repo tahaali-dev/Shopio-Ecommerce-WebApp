@@ -167,14 +167,19 @@ export const getSingleProducts = async (slug) => {
 };
 
 // CheckOut Product---------------
-export const CheckoutProduct = async ({ amount }) => {
-  console.log(amount);
+export const CheckoutProduct = async ({
+  products,
+  payment,
+  buyerId,
+  status,
+  user,
+}) => {
   try {
     const {
-      data: { order },
+      data: { single },
     } = await apiUrl.post(
       "/product/checkout",
-      { amount },
+      { products, payment, buyerId, status },
       {
         headers: {
           "Content-Type": "application/json",
@@ -188,23 +193,23 @@ export const CheckoutProduct = async ({ amount }) => {
     //Options
     const options = {
       key,
-      amount: order.amount,
+      amount: single.amount,
       currency: "INR",
-      name: "taha",
-      description: "Tutorial of RazorPay",
-      image: "/loading.gif",
-      order_id: order.id,
-      // callback_url: "http://localhost:3000/product/paymentverification",
+      name: user.name,
+      // description: "Tutorial of RazorPay",
+      image: "/logo.png",
+      order_id: single.id,
       prefill: {
-        name: "Gaurav Kumar",
-        email: "gaurav.kumar@example.com",
-        contact: "9999999999",
+        name: user.name,
+        email: user.email,
+        contact: user.phone,
       },
       notes: {
-        address: "Razorpay Corporate Office",
+        address: user.address,
       },
       handler: function (response) {
         alert("Payment Succeeded");
+        localStorage.removeItem("cartItems");
         window.open("/", "_self");
       },
       theme: {

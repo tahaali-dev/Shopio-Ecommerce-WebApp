@@ -3,7 +3,7 @@ import "./Profile.css";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
-const user = useSelector((state) => state.app.user);
+  const user = useSelector((state) => state.app.user);
 
   return (
     <div className="profile-cont">
@@ -12,9 +12,7 @@ const user = useSelector((state) => state.app.user);
         <h3>{user.name}</h3>
         <p>{user.email}</p>
         <p>{user.phone}</p>
-        <p className="address">
-          {user.address} 35,ganga nagar dhar arod infpr madhya prafdesh 452002
-        </p>
+        <p className="address">{user.address}</p>
       </div>
     </div>
   );

@@ -16,7 +16,13 @@ import { CheckoutProduct } from "../../Apis/ProductApis";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const {
+    cartItems,
+    cartTotalQuantity,
+    cartTotalAmount,
+    cartdiscount,
+    amountAfterDiscount,
+  } = useSelector((state) => state.cart);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
   const user = useSelector((state) => state.app.user);
 
@@ -25,7 +31,7 @@ const Cart = () => {
   //Get Totals
   useEffect(() => {
     dispatch(getTotals());
-  }, [cart, dispatch]);
+  }, [cartItems, dispatch]);
 
   //Remove Prs In Cart
   const handleRemoveFromCart = (product) => {
@@ -55,9 +61,18 @@ const Cart = () => {
   // Mutations
   const Checkoutmutation = useMutation(CheckoutProduct);
 
-  const HandleCheckout = (amount) => {
-    // console.log(amount);
-    Checkoutmutation.mutate({ amount });
+  const HandleCheckout = (payment) => {
+    const filterIds = cartItems.map((item) => item.id);
+
+    const data = {
+      products: filterIds,
+      payment,
+      buyerId: user.id,
+      status: "PROCESSING",
+      user,
+    };
+
+    Checkoutmutation.mutate(data);
   };
   return (
     <div className="cart-main">
@@ -66,8 +81,8 @@ const Cart = () => {
           <h2>Your Added Products</h2>
           {/* cart display section */}
           <div className="card-card-cont">
-            {cart.cartItems &&
-              cart.cartItems?.map((item, i) => {
+            {cartItems &&
+              cartItems?.map((item, i) => {
                 return (
                   <div className="cart-card" key={i}>
                     <img src={`${baseURL}${item.image}`} alt="image" />
@@ -98,43 +113,46 @@ const Cart = () => {
 
         {/* cart total and checkout section */}
         <div className="checkout-sec">
-          {user && user ? (
-            <div className="inner-sec">
-              <h2>Checkout Now </h2>
-              <img src="/delivery-truck.gif" alt="truck" />
-              <div>
-                <p>Total items</p>
-                <h4>{cart.cartTotalQuantity}pcs</h4>
-              </div>
-
-              <div>
-                <p>Total Amount</p>
-                <h4>${cart.cartTotalAmount}</h4>
-              </div>
-
-              <div>
-                <p>Total Discount</p>
-                <span>
-                  <h4>10%</h4>
-                  <h4>${cart.cartdiscount}</h4>
-                </span>
-              </div>
-
-              <button
-                className="cart-btn"
-                onClick={() => HandleCheckout(cart.amountAfterDiscount)}
-              >
-                Pay ${cart.amountAfterDiscount}
-              </button>
-            </div>
-          ) : (
+          {!user && !user ? (
             <div className="not-user">
               <p>login first to Checkout</p>
-
               <Link className="link-d btn1" onClick={handleLogReg}>
                 Login
               </Link>
             </div>
+          ) : (
+            <>
+              {cartItems.length === 0 ? <><Link to="/">Add Products</Link></> : ( <div className="inner-sec">
+                <h2>Checkout Now </h2>
+                <img src="/delivery-truck.gif" alt="truck" />
+                <div>
+                  <p>Total items</p>
+                  <h4>{cartTotalQuantity}pcs</h4>
+                </div>
+
+                <div>
+                  <p>Total Amount</p>
+                  <h4>${cartTotalAmount}</h4>
+                </div>
+
+                <div>
+                  <p>Total Discount</p>
+                  <span>
+                    <h4>10%</h4>
+                    <h4>${cartdiscount}</h4>
+                  </span>
+                </div>
+
+                <button
+                  className="cart-btn"
+                  onClick={() => HandleCheckout(amountAfterDiscount)}
+                >
+                  Pay ${amountAfterDiscount}
+                </button>
+              </div>)}
+
+             
+            </>
           )}
         </div>
       </section>
