@@ -69,14 +69,14 @@ const AllProductsAdmin = () => {
     }
   };
 
-  //Mutation Run For Adding Category--------------
+  //Mutation Run For Update --------------
   const UpdateProductMutation = useMutation(UpdateProduct, {
     onSuccess: () => {
       queryClient.invalidateQueries("allproducts");
     },
   });
 
-  //UpDate Category Handle---
+  //UpDate  Handle---
   const HandleUpdate = (e) => {
     e.preventDefault();
     UpdateProductMutation.mutate(datasend);
@@ -85,13 +85,13 @@ const AllProductsAdmin = () => {
     // }
   };
 
-   //Handle Single Product
-   const navigate = useNavigate();
-   const HandleSinglePage = (slug) => {
-     console.log("clicked");
-     // console.log(slug);
-     navigate(`/singleproduct/${slug}`);
-   };
+  //Handle Single Product
+  const navigate = useNavigate();
+  const HandleSinglePage = (slug) => {
+    console.log("clicked");
+    // console.log(slug);
+    navigate(`/singleproduct/${slug}`);
+  };
 
   // JSx Return--------------------
   return (
@@ -101,7 +101,9 @@ const AllProductsAdmin = () => {
           <div key={i} className="ProductCard">
             <img src={`${baseURL}${item.image}`} alt="image" />
             <div className="content">
-            <h3 onClick={()=>HandleSinglePage(item.slug)}>{item.name.slice(0, 50)}...</h3>
+              <h3 onClick={() => HandleSinglePage(item.slug)}>
+                {item.name.slice(0, 50)}...
+              </h3>
               <p>{item.description.slice(0, 50)}...</p>
 
               <div className="priceCont">

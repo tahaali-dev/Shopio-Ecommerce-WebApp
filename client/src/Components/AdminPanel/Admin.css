@@ -323,8 +323,8 @@
   /* border: 1px solid; */
   display: flex;
   justify-content: space-between;
-  min-height:5vh;
-  max-height:5vh;
+  min-height: 5vh;
+  max-height: 5vh;
 }
 .priceCont {
   /* border: 1px solid; */
@@ -369,6 +369,11 @@
   max-width: 47%;
   min-width: 47%;
   text-align: center;
+}
+select {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 @media (max-width: 786px) {

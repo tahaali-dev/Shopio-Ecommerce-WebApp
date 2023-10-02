@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Profile from "../UserProfile/Profile/Profile";
 import AdminCategory from "./AdminCategory";
 import AdminProducts from "./AdminProducts";
+import Orders from "./Orders";
 
 const Adminpanel = () => {
   const [switchpanel, setSwitch] = useState("Admin");
@@ -18,8 +19,8 @@ const Adminpanel = () => {
         <button className="toggle-btn" onClick={() => setSwitch("Products")}>
           Products
         </button>
-        <button className="toggle-btn" onClick={() => setSwitch("Users")}>
-          Users
+        <button className="toggle-btn" onClick={() => setSwitch("Orders")}>
+          Orders
         </button>
       </div>
       <div className="switch-cont">
@@ -40,7 +41,7 @@ const Adminpanel = () => {
                     <AdminProducts />
                   </>
                 ) : (
-                  <>Users</>
+                  <><Orders/></>
                 )}
               </>
             )}

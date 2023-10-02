@@ -239,7 +239,7 @@ export const CheckoutProduct = async ({
   }
 };
 
-//Get All Orders---------------
+//Get user Orders---------------
 export const getAllOrders = async (id) => {
   try {
     const response = await apiUrl.get(`/product/getorders/${id}`);
@@ -259,6 +259,37 @@ export const DeleteOrder = async (id) => {
     if (response.data.success) {
       toast.success("Cancelation Success");
       return response.data.category;
+    } else {
+      toast.error(response.data.message, "error in  api");
+      console.log(response.data.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+    throw error;
+  }
+};
+
+//Get All Admin Orders---------------
+export const getAllAdminOrders = async () => {
+  try {
+    const response = await apiUrl.get(`/product/getallorders`);
+    return response.data;
+  } catch (error) {
+    toast.error(error.message);
+    throw error;
+  }
+};
+
+// Update Product Status---------------
+export const UpdateStatus = async ({ id, status }) => {
+  try {
+    const response = await apiUrl.put(`/product/updateStatus/${id}`, {
+      status,
+    });
+
+    if (response.data.success) {
+      toast.success(response.data.message);
+      return response.data;
     } else {
       toast.error(response.data.message, "error in  api");
       console.log(response.data.message);

@@ -391,3 +391,44 @@ export const deleteOrder = async (req, res) => {
     });
   }
 };
+
+// Get All orders
+export const GetAllOrders = async (req, res) => {
+  try {
+    const userOrders = await prisma.Order.findMany();
+
+    res.status(200).json(userOrders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// order status Update
+export const orderStatusUpdate = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const { status } = req.body;
+
+    // Use Prisma to update the order status
+    const updatedOrder = await prisma.Order.update({
+      where: { id: orderId },
+      data: { status },
+    });
+
+    res.status(201).send({
+      success: true,
+      message: "Product Status Updated  Successfully",
+      updatedOrder,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While Updating Order",
+      error,
+    });
+  } finally {
+    await prisma.$disconnect(); 
+  }
+};

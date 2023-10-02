@@ -1,34 +1,44 @@
 import React from "react";
-import "./Order.css";
+// import "./Order.css";
 import { useSelector } from "react-redux";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { DeleteOrder, getAllOrders } from "../../../Apis/ProductApis.js";
-import Loader from "../../../Components/Loader/Loader";
+import {
+  DeleteOrder,
+  UpdateStatus,
+  getAllAdminOrders,
+  getAllOrders,
+} from "../../Apis/ProductApis.js";
+import Loader from "../../Components/Loader/Loader";
 import moment from "moment";
 //Imports-------------------------
 
 const Order = () => {
   const { id } = useSelector((state) => state.app.user);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
-  const { data, isLoading } = useQuery("allorders", () => getAllOrders(id));
-  console.log(data);
+  const { data, isLoading } = useQuery("alladminorders", () =>
+    getAllAdminOrders()
+  );
 
-  //Mutation Run For Handle Delete--
+  //Status array
+  const StatusArr = [
+    "NOT_PROCESS",
+    "PROCESSING",
+    "SHIPPED",
+    "DELIVERED",
+    "CANCELED",
+  ];
+
+  //Mutation Run For Update --------------
   const queryClient = useQueryClient();
-  const DeleteMutation = useMutation(DeleteOrder, {
+  const UpdateStatusMutation = useMutation(UpdateStatus, {
     onSuccess: () => {
-      queryClient.invalidateQueries("allorders");
+      queryClient.invalidateQueries("alladminorders");
     },
   });
 
-  //Handle Delete Order-----------
-  const HandleDelte = (id) => {
-    let text = "Confrim Delete!\n OK or Cancel.";
-    if (confirm(text) == true) {
-      DeleteMutation.mutate(id);
-    } else {
-      toast.error("Delete canceled!");
-    }
+  //Handle Select Change
+  const handleChange = (status, id) => {
+    UpdateStatusMutation.mutate({ status, id });
   };
 
   //Jsx Return------------
@@ -47,7 +57,21 @@ const Order = () => {
               return (
                 <div className="main-order-card" key={i}>
                   <div className="order-details">
-                    <h4>{order.status}</h4>
+                    <select
+                      onChange={(e) => {
+                        handleChange(e.target.value, order.id);
+                      }}
+                    >
+                      <option value="">Order Status</option>
+                      {StatusArr.map((name, i) => {
+                        return (
+                          <option key={i} value={name}>
+                            {name}
+                          </option>
+                        );
+                      })}
+                    </select>
+
                     <h4>Paid ${order.payment}</h4>
 
                     <h4>{formattedDate}</h4>
@@ -76,29 +100,7 @@ const Order = () => {
                         );
                       })}
                   </div>
-                  {order.status == "NOT_PROCESS" ? (
-                    <>
-                      <button
-                        className="remove-btn remove-order-btn"
-                        onClick={() => HandleDelte(order.id)}
-                      >
-                        Cancel
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      {order.status == "DELIVERED" ? (
-                        <>
-                          {" "}
-                          <h4 className="cant-cancel">Delivered</h4>
-                        </>
-                      ) : (
-                        <>
-                          <h4 className="cant-cancel">Cannot Cancel</h4>
-                        </>
-                      )}
-                    </>
-                  )}
+                  <h4>Current Status : {order.status}</h4>
                 </div>
               );
             })}

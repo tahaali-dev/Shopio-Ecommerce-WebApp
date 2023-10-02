@@ -4,15 +4,18 @@ import multer from "multer";
 import {
   Checkout,
   CreateProduct,
+  GetAllOrders,
   GetUserOrders,
   deleteOrder,
   deleteProductController,
   getProductController,
   getSingleProductController,
   orderCreation,
+  orderStatusUpdate,
   productFiltersController,
   updateProductController,
 } from "../Controllers/ProductControllers.js";
+import { UpdateProduct } from "../../client/src/Apis/ProductApis.js";
 //-------------------------------Imports----
 const router = express.Router();
 
@@ -73,5 +76,11 @@ router.get("/getkey", (req, res) => {
 router.get("/getorders/:userId", GetUserOrders);
 //Delete Order
 router.delete("/deleteorder/:id", deleteOrder);
+
+//Get All Orders
+router.get("/getallorders", GetAllOrders);
+
+//Update Status
+router.put("/updateStatus/:orderId", orderStatusUpdate);
 
 export { router as ProductRoutes };
