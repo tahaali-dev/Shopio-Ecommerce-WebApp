@@ -15,7 +15,7 @@ import {
   productFiltersController,
   updateProductController,
 } from "../Controllers/ProductControllers.js";
-import { UpdateProduct } from "../../client/src/Apis/ProductApis.js";
+
 //-------------------------------Imports----
 const router = express.Router();
 
