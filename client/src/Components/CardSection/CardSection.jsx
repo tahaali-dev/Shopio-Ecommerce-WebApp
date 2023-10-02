@@ -7,11 +7,12 @@ import { Prices } from "../../Utils/Price.js";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/cart";
+import Loader from "../Loader/Loader";
 //Imports-------------------
 
 const CardSection = () => {
   //Getting Products from Backend-------
-  const { data } = useQuery("allproducts", getAllProducts);
+  const { data, isLoading } = useQuery("allproducts", getAllProducts);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
 
   // Query To Get All Categories
@@ -98,94 +99,104 @@ const CardSection = () => {
   };
 
   return (
-    <div className="card-cont">
-      <h2>Products</h2>
-      <div className="layout-filter">
-        <div className="filter-cont">
-          <div className="filter-category">
-            <h4>Filter By Category</h4>
-            {Category.data?.map((item, i) => {
-              return (
-                <label key={i}>
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    key={item.id}
-                    onChange={(e) => handleFilter(e.target.checked, item.id)}
-                  />
-                  <p>{item.name.slice(0, 20)}</p>
-                </label>
-              );
-            })}
-          </div>
-
-          {/* Price Filter  */}
-          <div className="filter-category filter-price">
-            <h4>Price Range</h4>
-            {Prices?.map((item, i) => {
-              return (
-                <label key={i}>
-                  <input
-                    type="radio"
-                    className="checkbox"
-                    key={item.id}
-                    value={item.array}
-                    id={item.id}
-                    onChange={(e) => setRadio(e.target.value)}
-                    name="price"
-                  />
-                  {item.name.slice(0, 20)}
-                </label>
-              );
-            })}
-          </div>
-          <button
-            className="btn-loadmore"
-            onClick={() => {
-              setFilterData(data);
-            }}
-          >
-            Show All
-          </button>
+    <>
+      {isLoading ? (
+        <div className="loader-order">
+          <Loader />
         </div>
-
-        {/* Card Grid------------------  */}
-        <div className="card-grid">
-          {/* Card--------------------- */}
-          {visibleProducts?.map((item, i) => {
-            return (
-              <div key={i} className="ProductCard">
-                <img src={`${baseURL}${item.image}`} alt="image" />
-                <div className="content">
-                  <h3 onClick={() => HandleSinglePage(item.slug)}>
-                    {item.name.slice(0, 50)}...
-                  </h3>
-                  <div className="price-quantity">
-                    <p>Left : {item.quantity}pcs</p>
-                    <h4>${item.price.slice(0, 10)}</h4>
-                  </div>
-
-                  <div className="priceCont">
-                    <button
-                      className="card-btn"
-                      onClick={() => AddToCartHandle(item)}
-                    >
-                      Add To Cart
-                    </button>
-                  </div>
-                </div>
+      ) : (
+        <div className="card-cont">
+          <h2>Products</h2>
+          <div className="layout-filter">
+            <div className="filter-cont">
+              <div className="filter-category">
+                <h4>Filter By Category</h4>
+                {Category.data?.map((item, i) => {
+                  return (
+                    <label key={i}>
+                      <input
+                        type="checkbox"
+                        className="checkbox"
+                        key={item.id}
+                        onChange={(e) =>
+                          handleFilter(e.target.checked, item.id)
+                        }
+                      />
+                      <p>{item.name.slice(0, 20)}</p>
+                    </label>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-      </div>
 
-      {loadMoreVisible && (
-        <button className="btn-loadmore" onClick={handleLoadMore}>
-          Load More
-        </button>
+              {/* Price Filter  */}
+              <div className="filter-category filter-price">
+                <h4>Price Range</h4>
+                {Prices?.map((item, i) => {
+                  return (
+                    <label key={i}>
+                      <input
+                        type="radio"
+                        className="checkbox"
+                        key={item.id}
+                        value={item.array}
+                        id={item.id}
+                        onChange={(e) => setRadio(e.target.value)}
+                        name="price"
+                      />
+                      {item.name.slice(0, 20)}
+                    </label>
+                  );
+                })}
+              </div>
+              <button
+                className="btn-loadmore"
+                onClick={() => {
+                  setFilterData(data);
+                }}
+              >
+                Show All
+              </button>
+            </div>
+
+            {/* Card Grid------------------  */}
+            <div className="card-grid">
+              {/* Card--------------------- */}
+              {visibleProducts?.map((item, i) => {
+                return (
+                  <div key={i} className="ProductCard">
+                    <img src={`${baseURL}${item.image}`} alt="image" />
+                    <div className="content">
+                      <h3 onClick={() => HandleSinglePage(item.slug)}>
+                        {item.name.slice(0, 50)}...
+                      </h3>
+                      <div className="price-quantity">
+                        <p>Left : {item.quantity}pcs</p>
+                        <h4>${item.price.slice(0, 10)}</h4>
+                      </div>
+
+                      <div className="priceCont">
+                        <button
+                          className="card-btn"
+                          onClick={() => AddToCartHandle(item)}
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {loadMoreVisible && (
+            <button className="btn-loadmore" onClick={handleLoadMore}>
+              Load More
+            </button>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

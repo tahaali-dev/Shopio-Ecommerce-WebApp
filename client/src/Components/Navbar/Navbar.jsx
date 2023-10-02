@@ -78,7 +78,9 @@ const Navbar = () => {
           <Link to="/allproduct" className="link-d">
             Products
           </Link>
-          <Link className="link-d">Categories</Link>
+          <Link to="/catpage" className="link-d">
+            Categories
+          </Link>
           <Link className="link-d">Support</Link>
         </div>
         {/* Div-4 */}
@@ -108,6 +110,9 @@ const Navbar = () => {
         {/* Menu Mobile */}
         <div className={menu}>
           <div className="mobile-menu-link-cont">
+            <Link to="/" className="link-d" onClick={HandleMenu}>
+              Home
+            </Link>
             <Link to="/dashboard" className="link-d" onClick={HandleMenu}>
               My Profile
             </Link>
@@ -121,8 +126,12 @@ const Navbar = () => {
               Categories
             </Link>
             <Link to="/" className="link-d" onClick={HandleMenu}>
-              Home
+              ContactUs
             </Link>
+            <Link to="/" className="link-d" onClick={HandleMenu}>
+              Privacy Policy
+            </Link>
+
             <h3 onClick={HandleMenu} className="link-d">
               <GrClose />
             </h3>
@@ -139,7 +148,7 @@ const Navbar = () => {
       </div>
       {searchdata ? (
         <>
-          <ProductModal searchdata={searchdata} />
+          <ProductModal searchdata={searchdata} setsearh={setSearchdata} />
         </>
       ) : null}
     </div>

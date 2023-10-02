@@ -111,7 +111,7 @@ input:active {
   display: none;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 960px) {
   .nav-cont-mobile {
     /* border: 1px solid; */
     flex-direction: column;
@@ -213,7 +213,7 @@ input:active {
   display: none;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 960px) {
   form {
     /* border: 1px solid; */
     z-index: 1;
@@ -239,13 +239,13 @@ input:active {
   .menu-mobile {
     position: absolute;
     top: 15vh;
-    left: 0px;
+    /* left: -400px; */
     min-height: 85vh;
     max-height: 85vh;
     min-width: 100vw;
     background-color: var(--lightpurple);
     transition: 0.3s ease-in-out;
-    transform: translateX(-400px);
+    transform: translateX(-1400px);
     display: flex;
     justify-content: center;
     align-items: center;

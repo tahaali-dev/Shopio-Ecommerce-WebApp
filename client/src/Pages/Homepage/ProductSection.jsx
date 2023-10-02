@@ -4,14 +4,14 @@ import { getAllProducts } from "../../Apis/ProductApis";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { storeCart } from "../../Redux/LogregSlice";
 import { addToCart } from "../../Redux/cart";
+import Loader from "../../Components/Loader/Loader"
 //Imports-------------------
 
 const ProductSection = () => {
   const navigate = useNavigate();
   //Getting Products from Backend-------
-  const { data } = useQuery("allproducts", getAllProducts);
+  const { data, isLoading } = useQuery("allproducts", getAllProducts);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
   const categorySet = useSelector((state) => state.app.category);
 
@@ -85,46 +85,54 @@ const ProductSection = () => {
     navigate("/cartpage");
   };
 
-
   //Jsx Return----------------
   return (
-    <div className="main-cont">
-      <h2>Trending Products</h2>
-      {/* Card Grid------------------  */}
-      <div className="card-grid gridproduct-section">
-        {/* Card--------------------- */}
-        {visibleProducts?.map((item, i) => {
-          return (
-            <div key={i} className="ProductCard">
-              <img src={`${baseURL}${item.image}`} alt="image" />
-              <div className="content">
-                <h3 onClick={() => HandleSinglePage(item.slug)}>
-                  {item.name.slice(0, 50)}...
-                </h3>
-                <div className="price-quantity">
-                    <p>Left : {item.quantity}pcs</p>
-                    <h4>${item.price.slice(0, 10)}</h4>
-                  </div>
+    <>
+      {isLoading ? (
+        <div  className="loader-order"><Loader/></div>
+      ) : (
+        <>
+          {" "}
+          <div className="main-cont">
+            <h2>Trending Products</h2>
+            {/* Card Grid------------------  */}
+            <div className="card-grid gridproduct-section">
+              {/* Card--------------------- */}
+              {visibleProducts?.map((item, i) => {
+                return (
+                  <div key={i} className="ProductCard">
+                    <img src={`${baseURL}${item.image}`} alt="image" />
+                    <div className="content">
+                      <h3 onClick={() => HandleSinglePage(item.slug)}>
+                        {item.name.slice(0, 50)}...
+                      </h3>
+                      <div className="price-quantity">
+                        <p>Left : {item.quantity}pcs</p>
+                        <h4>${item.price.slice(0, 10)}</h4>
+                      </div>
 
-                <div className="priceCont">
-                  <button
-                    className="card-btn"
-                    onClick={() => AddToCartHandle(item)}
-                  >
-                    Add To Cart
-                  </button>
-                </div>
-              </div>
+                      <div className="priceCont">
+                        <button
+                          className="card-btn"
+                          onClick={() => AddToCartHandle(item)}
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-      {loadMoreVisible && (
-        <button className="btn-loadmore" onClick={handleLoadMore}>
-          Load More
-        </button>
+            {loadMoreVisible && (
+              <button className="btn-loadmore" onClick={handleLoadMore}>
+                Load More
+              </button>
+            )}
+          </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 

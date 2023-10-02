@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSimilar } from "../../Redux/LogregSlice";
 import { addToCart } from "../../Redux/cart";
+import Loader from "../../Components/Loader/Loader";
 //Imports----------------------------------------------
 
 const SingleProductPage = () => {
@@ -45,85 +46,86 @@ const SingleProductPage = () => {
     navigate("/cartpage");
   };
 
-  
+  //Handle Single Product
+  const HandleSinglePage = (slug) => {
+    navigate(`/singleproduct/${slug}`);
+  };
 
   //Logs For testing
   // console.log(Allproducts.data, "Allproducts on single page");
 
   //Jsx Return------------------------
   return (
-    <div className="single-main-cont">
+    <>
       {isLoading ? (
-        "loading"
+        <div className="loader-order">
+          <Loader />
+        </div>
       ) : (
         <>
-          {" "}
-          {/* Top Section */}
-          <section className="top-single">
-            {/* left */}
-            <div className="top-left">
-              <img src={`${baseURL}${data?.image}`} alt="image" />
-            </div>
-
-            {/* Right */}
-            <div className="top-right">
-              <h2>{data?.name}</h2>
-              <h3>${data?.price}</h3>
-              <p className="description">{data?.description}</p>
-              <p className="other-p">Stock Available : {data?.quantity}pcs</p>
-              <p className="other-p">Category Name : {data?.Category.name}</p>
-              <div className="btn-cont-single">
-                <button
-                  className="add-to-cart-btn"
-                  onClick={() => AddToCartHandle(data)}
-                >
-                  Add to Cart
-                </button>
+          <div className="single-main-cont">
+            {/* Top Section */}
+            <section className="top-single">
+              {/* left */}
+              <div className="top-left">
+                <img src={`${baseURL}${data?.image}`} alt="image" />
               </div>
-            </div>
-          </section>
-        </>
-      )}
 
-      {/* Similar Products Section*/}
-      <section className="similar-sec">
-        <h2>Similar Products</h2>
-        {/* Card Grid------------------  */}
-        <div className="card-grid similargrid">
-          {/* Card--------------------- */}
-          {Allproducts.isLoading ? (
-            "loading"
-          ) : (
-            <>
-              {" "}
-              {similar?.map((item, i) => {
-                return (
-                  <div key={i} className="ProductCard">
-                    <img src={`${baseURL}${item.image}`} alt="image" />
-                    <div className="content">
-                      <h3>{item.name.slice(0, 50)}...</h3>
-                      <div className="price-quantity">
-                        <p>Left : {item.quantity}pcs</p>
-                        <h4>${item.price.slice(0, 10)}</h4>
-                      </div>
+              {/* Right */}
+              <div className="top-right">
+                <h2>{data?.name}</h2>
+                <h3>${data?.price}</h3>
+                <p className="description">{data?.description}</p>
+                <p className="other-p">Stock Available : {data?.quantity}pcs</p>
+                <p className="other-p">Category Name : {data?.Category.name}</p>
+                <div className="btn-cont-single">
+                  <button
+                    className="add-to-cart-btn"
+                    onClick={() => AddToCartHandle(data)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </section>
 
-                      <div className="priceCont">
-                        <button
-                          className="card-btn"
-                          onClick={() => AddToCartHandle(item)}
-                        >
-                          Add To Cart
-                        </button>
+            {/* Similar Products Section*/}
+            <section className="similar-sec">
+              <h2>Similar Products</h2>
+              {/* Card Grid------------------  */}
+              <div className="card-grid similargrid">
+                {/* Card--------------------- */}
+                {similar?.map((item, i) => {
+                  return (
+                    <div key={i} className="ProductCard">
+                      <img src={`${baseURL}${item.image}`} alt="image" />
+                      <div className="content">
+                        <h3 onClick={() => HandleSinglePage(item.slug)}>
+                          {item.name.slice(0, 50)}...
+                        </h3>
+                        <div className="price-quantity">
+                          <p>Left : {item.quantity}pcs</p>
+                          <h4>${item.price.slice(0, 10)}</h4>
+                        </div>
+
+                        <div className="priceCont">
+                          <button
+                            className="card-btn"
+                            onClick={() => AddToCartHandle(item)}
+                          >
+                            Add To Cart
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </>
-          )}
-        </div>
-      </section>
-    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
