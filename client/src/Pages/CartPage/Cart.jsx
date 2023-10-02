@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
@@ -59,13 +58,29 @@ const Cart = () => {
 
   //Handle CheckOut
   // Mutations
-  const Checkoutmutation = useMutation(CheckoutProduct);
+  const queryClient = useQueryClient();
+  const Checkoutmutation = useMutation(CheckoutProduct, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("allorders");
+    },
+  });
+
+  const productData = cartItems.map((item) => ({
+    id: item.id,
+    cartQuantity: item.cartQuantity,
+    description: item.description,
+    image: item.image,
+    name: item.name,
+    orderId: item.orderId,
+    price: item.price,
+  }));
+  console.log(productData);
 
   const HandleCheckout = (payment) => {
-    const filterIds = cartItems.map((item) => item.id);
+    // const filterIds = cartItems.map((item) => item.id);
 
     const data = {
-      products: filterIds,
+      products: productData,
       payment,
       buyerId: user.id,
       status: "PROCESSING",

@@ -177,7 +177,7 @@ export const CheckoutProduct = async ({
   try {
     const {
       data: { order },
-    } = await apiUrltest.post(
+    } = await apiUrl.post(
       "/product/checkout",
       { payment },
       {
@@ -209,9 +209,6 @@ export const CheckoutProduct = async ({
       },
 
       handler: async function (response) {
-        alert("Payment Succeeded");
-        localStorage.removeItem("cartItems");
-        // window.open("/", "_self");
         if (response) {
           const response2 = await apiUrltest.post("/product/orderCreation", {
             products,
@@ -220,7 +217,10 @@ export const CheckoutProduct = async ({
             status,
             user,
           });
-          
+
+          localStorage.removeItem("cartItems");
+          toast.success("Payment Succeeded");
+          window.open("/", "_self");
         }
       },
       theme: {
@@ -235,6 +235,17 @@ export const CheckoutProduct = async ({
   } catch (error) {
     // toast.error(error.message);
     console.log(error);
+    throw error;
+  }
+};
+
+//Get All Orders---------------
+export const getAllOrders = async (id) => {
+  try {
+    const response = await apiUrltest.get(`/product/getorders/${id}`);
+    return response.data;
+  } catch (error) {
+    toast.error(error.message);
     throw error;
   }
 };

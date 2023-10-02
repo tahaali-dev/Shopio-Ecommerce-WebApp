@@ -1,0 +1,46 @@
+.myOrder-sec {
+  /* border: 1px solid; */
+  min-width: 100%;
+  min-height: 20vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.myorder-card {
+  /* border: 1px solid; */
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 13vh;
+  padding: 0px;
+}
+
+.card-top {
+  /* border: 1px solid; */
+  min-width: 100%;
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-order-btn {
+  min-width: 25%;
+  min-height: 5vh;
+}
+.main-order-card {
+  /* border: 1px solid; */
+  min-width: 100%;
+  padding: 0px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background-color: rgba(0, 0, 0, 0.096);
+  padding: 7px;
+  border-radius: 10px;
+}
+.order-details {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 7px;
+}

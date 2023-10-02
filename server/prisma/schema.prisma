@@ -32,8 +32,6 @@ model Product {
   updatedAt   DateTime  @updatedAt
   Category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?   @db.ObjectId
-  Order       Order?    @relation(fields: [orderId], references: [id])
-  orderId     String?   @db.ObjectId
 }
 
 model Category {
@@ -45,7 +43,7 @@ model Category {
 
 model Order {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  products  Product[] // Relation to products in the order
+  products  Json
   payment   Int
   buyer     User        @relation(fields: [buyerId], references: [id])
   buyerId   String      @db.ObjectId

@@ -339,9 +339,7 @@ export const orderCreation = async (req, res) => {
     // Create the order using Prisma
     const createdOrder = await prisma.Order.create({
       data: {
-        products: {
-          connect: products.map((productId) => ({ id: productId })),
-        },
+        products,
         payment,
         buyer: { connect: { id: buyerId } },
         status,
@@ -363,17 +361,9 @@ export const GetUserOrders = async (req, res) => {
   try {
     const userId = req.params.userId; // Extract user ID from URL parameter
 
-    // Query the database to retrieve orders for the specified user
-    const userOrders = await prisma.User.findMany({
+    const userOrders = await prisma.Order.findMany({
       where: {
-        id: userId,
-      },
-      include: {
-        Order: {
-          include: {
-            products: true,
-          },
-        }, // Include product details for each order
+        buyerId: userId,
       },
     });
 
