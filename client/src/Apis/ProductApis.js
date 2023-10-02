@@ -210,7 +210,7 @@ export const CheckoutProduct = async ({
 
       handler: async function (response) {
         if (response) {
-          const response2 = await apiUrltest.post("/product/orderCreation", {
+          const response2 = await apiUrl.post("/product/orderCreation", {
             products,
             payment,
             buyerId,
@@ -242,7 +242,7 @@ export const CheckoutProduct = async ({
 //Get All Orders---------------
 export const getAllOrders = async (id) => {
   try {
-    const response = await apiUrltest.get(`/product/getorders/${id}`);
+    const response = await apiUrl.get(`/product/getorders/${id}`);
     return response.data;
   } catch (error) {
     toast.error(error.message);
