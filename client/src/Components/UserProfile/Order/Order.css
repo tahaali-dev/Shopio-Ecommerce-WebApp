@@ -1,10 +1,13 @@
 .myOrder-sec {
   /* border: 1px solid; */
+  margin: 10px 0px;
   min-width: 100%;
   min-height: 20vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+  /* justify-items: center; */
+  /* align-items: center; */
 }
 .myorder-card {
   /* border: 1px solid; */
@@ -12,6 +15,18 @@
   max-width: 100%;
   min-height: 13vh;
   padding: 0px;
+}
+.cart-cont {
+  /* border: 1px solid; */
+  min-height: 25vh;
+  max-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  overflow: scroll;
+}
+.cart-cont::-webkit-scrollbar {
+  display: none;
 }
 
 .card-top {
@@ -43,4 +58,20 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 7px;
+}
+.loader-order {
+  /* border: 1px solid; */
+  min-width: 100%;
+  align-self: center;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 786px) {
+  .myOrder-sec {
+    grid-template-columns: 1fr;
+    /* border: 1px solid; */
+  }
 }
