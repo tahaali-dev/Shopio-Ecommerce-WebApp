@@ -6,17 +6,19 @@ import { UserRoutes } from "./Routes/UserRoutes.js";
 import { CategoryRoute } from "./Routes/CategoryRoutes.js";
 import { ProductRoutes } from "./Routes/ProductRoute.js";
 import Razorpay from "razorpay";
+import path from "path";
 //-------------Imports-------------------
 
 // App Uses ----------
 const app = express();
 app.use(express.json());
 app.use(express.static("uploads"));
+app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use(cors());
 
 //Server Test
-app.get("/", (req, res) => {
-  res.send("Hey,Your Server Is Up ");
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
 export const instance = new Razorpay({
