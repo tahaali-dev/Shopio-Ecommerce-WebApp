@@ -254,7 +254,7 @@ export const getAllOrders = async (id) => {
 export const DeleteOrder = async (id) => {
   console.log(id, "id in api");
   try {
-    const response = await apiUrltest.delete(`/product/deleteorder/${id}`);
+    const response = await apiUrl.delete(`/product/deleteorder/${id}`);
 
     if (response.data.success) {
       toast.success("Cancelation Success");
