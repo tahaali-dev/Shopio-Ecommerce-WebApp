@@ -269,7 +269,6 @@ export const productListController = async (req, res) => {
     });
   }
 };
-
 //Checkout Controller
 // export const Checkout = async (req, res) => {
 //   const { products, payment, buyerId, status } = req.body;
@@ -323,33 +322,6 @@ export const Checkout = async (req, res) => {
   try {
     const order = await instance.orders.create(options);
 
-    // const order = instance.orders.create(options, async (err, order) => {
-    //   if (!err) {
-    //     // Create the order using Prisma
-    //     const createdOrder = await prisma.Order.create({
-    //       data: {
-    //         products: {
-    //           connect: products.map((productId) => ({ id: productId })),
-    //         },
-    //         payment,
-    //         buyer: { connect: { id: buyerId } },
-    //         status,
-    //       },
-    //     });
-
-    //     res.status(200).json({
-    //       success: true,
-    //       single: order,
-    //       createdOrder: createdOrder,
-    //     });
-    //   } else {
-    //     // Payment was not successful
-    //     res.status(400).json({
-    //       success: false,
-    //       message: "Payment was not successful",
-    //     });
-    //   }
-    // });
     res.status(200).send({
       message: "success",
       order,
@@ -392,12 +364,16 @@ export const GetUserOrders = async (req, res) => {
     const userId = req.params.userId; // Extract user ID from URL parameter
 
     // Query the database to retrieve orders for the specified user
-    const userOrders = await prisma.Order.findMany({
+    const userOrders = await prisma.User.findMany({
       where: {
-        buyerId: userId,
+        id: userId,
       },
       include: {
-        products: true, // Include product details for each order
+        Order: {
+          include: {
+            products: true,
+          },
+        }, // Include product details for each order
       },
     });
 
