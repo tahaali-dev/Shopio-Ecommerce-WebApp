@@ -373,3 +373,21 @@ export const GetUserOrders = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+//delete order controller
+export const deleteOrder = async (req, res) => {
+  try {
+    await prisma.Order.delete({ where: { id: req.params.id } });
+    res.status(200).send({
+      success: true,
+      message: "Product Deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while deleting product",
+      error,
+    });
+  }
+};

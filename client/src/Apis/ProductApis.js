@@ -249,3 +249,22 @@ export const getAllOrders = async (id) => {
     throw error;
   }
 };
+
+//Delete Order---------------
+export const DeleteOrder = async (id) => {
+  console.log(id, "id in api");
+  try {
+    const response = await apiUrltest.delete(`/product/deleteorder/${id}`);
+
+    if (response.data.success) {
+      toast.success("Cancelation Success");
+      return response.data.category;
+    } else {
+      toast.error(response.data.message, "error in  api");
+      console.log(response.data.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+    throw error;
+  }
+};

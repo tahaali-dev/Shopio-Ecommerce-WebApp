@@ -5,6 +5,7 @@ import {
   Checkout,
   CreateProduct,
   GetUserOrders,
+  deleteOrder,
   deleteProductController,
   getProductController,
   getSingleProductController,
@@ -70,5 +71,7 @@ router.get("/getkey", (req, res) => {
 
 //Get User Orders Route
 router.get("/getorders/:userId", GetUserOrders);
+//Delete Order
+router.delete("/deleteorder/:id", deleteOrder);
 
 export { router as ProductRoutes };

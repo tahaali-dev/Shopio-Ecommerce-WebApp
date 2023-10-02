@@ -83,7 +83,7 @@ const Cart = () => {
       products: productData,
       payment,
       buyerId: user.id,
-      status: "PROCESSING",
+      status: "NOT_PROCESS",
       user,
     };
 
