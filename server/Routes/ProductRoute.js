@@ -8,6 +8,7 @@ import {
   deleteProductController,
   getProductController,
   getSingleProductController,
+  orderCreation,
   productFiltersController,
   updateProductController,
 } from "../Controllers/ProductControllers.js";
@@ -58,6 +59,7 @@ router.post("/product-filters", productFiltersController);
 
 //CheckOut route
 router.post("/checkout", Checkout);
+router.post("/orderCreation", orderCreation);
 
 router.get("/getkey", (req, res) => {
   res.send({

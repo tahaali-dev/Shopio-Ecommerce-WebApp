@@ -311,7 +311,7 @@ export const productListController = async (req, res) => {
 
 //Checkout Controller
 export const Checkout = async (req, res) => {
-  const { products, payment, buyerId, status } = req.body;
+  const { payment } = req.body;
 
   var options = {
     amount: payment * 100,
@@ -321,34 +321,64 @@ export const Checkout = async (req, res) => {
   };
 
   try {
-    // const order = await instance.orders.create(options);
+    const order = await instance.orders.create(options);
 
-    const order = instance.orders.create(options, async (err, order) => {
-      if (!err) {
-        // Create the order using Prisma
-        const createdOrder = await prisma.Order.create({
-          data: {
-            products: {
-              connect: products.map((productId) => ({ id: productId })),
-            },
-            payment,
-            buyer: { connect: { id: buyerId } },
-            status,
-          },
-        });
+    // const order = instance.orders.create(options, async (err, order) => {
+    //   if (!err) {
+    //     // Create the order using Prisma
+    //     const createdOrder = await prisma.Order.create({
+    //       data: {
+    //         products: {
+    //           connect: products.map((productId) => ({ id: productId })),
+    //         },
+    //         payment,
+    //         buyer: { connect: { id: buyerId } },
+    //         status,
+    //       },
+    //     });
 
-        res.status(200).json({
-          success: true,
-          single: order,
-          createdOrder: createdOrder,
-        });
-      } else {
-        // Payment was not successful
-        res.status(400).json({
-          success: false,
-          message: "Payment was not successful",
-        });
-      }
+    //     res.status(200).json({
+    //       success: true,
+    //       single: order,
+    //       createdOrder: createdOrder,
+    //     });
+    //   } else {
+    //     // Payment was not successful
+    //     res.status(400).json({
+    //       success: false,
+    //       message: "Payment was not successful",
+    //     });
+    //   }
+    // });
+    res.status(200).send({
+      message: "success",
+      order,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+//Order Creation Route
+export const orderCreation = async (req, res) => {
+  const { products, payment, buyerId, status } = req.body;
+  try {
+    // Create the order using Prisma
+    const createdOrder = await prisma.Order.create({
+      data: {
+        products: {
+          connect: products.map((productId) => ({ id: productId })),
+        },
+        payment,
+        buyer: { connect: { id: buyerId } },
+        status,
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      createdOrder: createdOrder,
     });
   } catch (error) {
     console.log(error);

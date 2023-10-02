@@ -122,36 +122,40 @@ const Cart = () => {
             </div>
           ) : (
             <>
-              {cartItems.length === 0 ? <><Link to="/">Add Products</Link></> : ( <div className="inner-sec">
-                <h2>Checkout Now </h2>
-                <img src="/delivery-truck.gif" alt="truck" />
-                <div>
-                  <p>Total items</p>
-                  <h4>{cartTotalQuantity}pcs</h4>
+              {cartItems.length === 0 ? (
+                <>
+                  <Link to="/">Add Products</Link>
+                </>
+              ) : (
+                <div className="inner-sec">
+                  <h2>Checkout Now </h2>
+                  <img src="/delivery-truck.gif" alt="truck" />
+                  <div>
+                    <p>Total items</p>
+                    <h4>{cartTotalQuantity}pcs</h4>
+                  </div>
+
+                  <div>
+                    <p>Total Amount</p>
+                    <h4>${cartTotalAmount}</h4>
+                  </div>
+
+                  <div>
+                    <p>Total Discount</p>
+                    <span>
+                      <h4>10%</h4>
+                      <h4>${cartdiscount}</h4>
+                    </span>
+                  </div>
+
+                  <button
+                    className="cart-btn"
+                    onClick={() => HandleCheckout(amountAfterDiscount)}
+                  >
+                    Pay ${amountAfterDiscount}
+                  </button>
                 </div>
-
-                <div>
-                  <p>Total Amount</p>
-                  <h4>${cartTotalAmount}</h4>
-                </div>
-
-                <div>
-                  <p>Total Discount</p>
-                  <span>
-                    <h4>10%</h4>
-                    <h4>${cartdiscount}</h4>
-                  </span>
-                </div>
-
-                <button
-                  className="cart-btn"
-                  onClick={() => HandleCheckout(amountAfterDiscount)}
-                >
-                  Pay ${amountAfterDiscount}
-                </button>
-              </div>)}
-
-             
+              )}
             </>
           )}
         </div>
