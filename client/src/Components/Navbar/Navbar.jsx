@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsMinecartLoaded, BsSearch } from "react-icons/bs";
 import { RiAccountPinCircleFill, RiMenu4Line } from "react-icons/ri";
+import { GrClose } from "react-icons/gr";
 import LogReg from "../Log-Reg/LogReg";
 import { useDispatch, useSelector } from "react-redux";
 import { Setclose, StoreToken, storeUser } from "../../Redux/LogregSlice";
@@ -107,10 +108,24 @@ const Navbar = () => {
         {/* Menu Mobile */}
         <div className={menu}>
           <div className="mobile-menu-link-cont">
-            <Link to="/allproduct" className="link-d">
+            <Link to="/dashboard" className="link-d" onClick={HandleMenu}>
+              My Profile
+            </Link>
+            <Link to="/dashboard" className="link-d" onClick={HandleMenu}>
+              My Orders
+            </Link>
+            <Link to="/allproduct" className="link-d" onClick={HandleMenu}>
               Products
             </Link>
-            <Link className="link-d">Categories</Link>
+            <Link to="/catpage" className="link-d" onClick={HandleMenu}>
+              Categories
+            </Link>
+            <Link to="/" className="link-d" onClick={HandleMenu}>
+              Home
+            </Link>
+            <h3 onClick={HandleMenu} className="link-d">
+              <GrClose />
+            </h3>
           </div>
         </div>
       </div>
