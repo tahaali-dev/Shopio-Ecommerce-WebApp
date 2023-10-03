@@ -5,14 +5,14 @@ import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Redux/cart";
-import Loader from "../../Components/Loader/Loader"
+import Loader from "../../Components/Loader/Loader";
 //Imports-------------------
 
 const ProductSection = () => {
   const navigate = useNavigate();
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
   const categorySet = useSelector((state) => state.app.category);
 
   //Handle Single Product
@@ -89,7 +89,9 @@ const ProductSection = () => {
   return (
     <>
       {isLoading ? (
-        <div  className="loader-order"><Loader/></div>
+        <div className="loader-order">
+          <Loader />
+        </div>
       ) : (
         <>
           {" "}

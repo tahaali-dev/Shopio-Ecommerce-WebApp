@@ -14,7 +14,7 @@ const SingleProductPage = () => {
   const dispatch = useDispatch();
   const { slug } = useParams();
   const Allproducts = useQuery("allproducts", getAllProducts);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/";
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/";
 
   // Handle SingleProductFetch
   const { data, isLoading } = useQuery("SingleProduct", async () =>

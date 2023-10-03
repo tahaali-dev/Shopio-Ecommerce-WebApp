@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 // ------------------Imports----------------------------
 export const apiUrl = axios.create({
-  baseURL: "https://e-commerce-server-f8m6.onrender.com",
+  baseURL: "https://uninterested-tan-centipede.cyclic.cloud",
 });
 export const apiUrltest = axios.create({
   baseURL: "http://localhost:3000",
@@ -37,7 +37,7 @@ export const CreateProduct = async ({
 }) => {
   console.log(Token);
   try {
-    const response = await apiUrl.post(
+    const response = await apiUrltest.post(
       "/product/create",
       { name, description, price, categoryId, quantity, image, Token },
       {
@@ -86,7 +86,7 @@ export const UpdateProduct = async ({
     "data inside api log"
   );
   try {
-    const response = await apiUrl.put(
+    const response = await apiUrltest.put(
       `/product/update/${id}`,
       { name, description, price, categoryId, quantity, image, Token },
       {

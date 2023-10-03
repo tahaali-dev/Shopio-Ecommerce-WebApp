@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 // ------------------Imports----------------------------
 export const apiUrl = axios.create({
-  baseURL: "https://e-commerce-server-f8m6.onrender.com",
+  baseURL: "https://uninterested-tan-centipede.cyclic.cloud",
 });
 
 //Get All Category---------------
