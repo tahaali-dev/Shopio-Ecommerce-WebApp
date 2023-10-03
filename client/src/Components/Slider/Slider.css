@@ -14,3 +14,9 @@
   min-width: 94%;
   border-radius: 10px;
 }
+@media (max-width: 786px) {
+  .image-slider img {
+    max-height: 25vh;
+    min-height: 25vh;
+  }
+}
