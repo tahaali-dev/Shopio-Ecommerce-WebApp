@@ -1,6 +1,6 @@
 import slugify from "slugify";
 import { prisma } from "../config/prismaconfig.js";
-import { instance } from "../Index.js";
+import { instance } from "../server.js";
 //imports--------------------
 
 //Create Products ----------------
