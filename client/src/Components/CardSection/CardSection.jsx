@@ -111,45 +111,49 @@ const CardSection = () => {
             <div className="filter-cont">
               <div className="filter-category">
                 <h4>Filter By Category</h4>
-                {Category.data?.map((item, i) => {
-                  return (
-                    <label key={i}>
-                      <input
-                        type="checkbox"
-                        className="checkbox"
-                        key={item.id}
-                        onChange={(e) =>
-                          handleFilter(e.target.checked, item.id)
-                        }
-                      />
-                      <p>{item.name.slice(0, 20)}</p>
-                    </label>
-                  );
-                })}
+                <div className="for-mobile">
+                  {Category.data?.map((item, i) => {
+                    return (
+                      <label key={i}>
+                        <input
+                          type="checkbox"
+                          className="checkbox"
+                          key={item.id}
+                          onChange={(e) =>
+                            handleFilter(e.target.checked, item.id)
+                          }
+                        />
+                        <p>{item.name.slice(0, 20)}</p>
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Price Filter  */}
               <div className="filter-category filter-price">
                 <h4>Price Range</h4>
-                {Prices?.map((item, i) => {
-                  return (
-                    <label key={i}>
-                      <input
-                        type="radio"
-                        className="checkbox"
-                        key={item.id}
-                        value={item.array}
-                        id={item.id}
-                        onChange={(e) => setRadio(e.target.value)}
-                        name="price"
-                      />
-                      {item.name.slice(0, 20)}
-                    </label>
-                  );
-                })}
+                <div className="for-mobile">
+                  {Prices?.map((item, i) => {
+                    return (
+                      <label key={i}>
+                        <input
+                          type="radio"
+                          className="checkbox"
+                          key={item.id}
+                          value={item.array}
+                          id={item.id}
+                          onChange={(e) => setRadio(e.target.value)}
+                          name="price"
+                        />
+                        {item.name.slice(0, 20)}
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
               <button
-                className="btn-loadmore"
+                className="btn-loadmore filter-btn"
                 onClick={() => {
                   setFilterData(data);
                 }}
@@ -190,7 +194,7 @@ const CardSection = () => {
           </div>
 
           {loadMoreVisible && (
-            <button className="btn-loadmore" onClick={handleLoadMore}>
+            <button className="btn-loadmore " onClick={handleLoadMore}>
               Load More
             </button>
           )}

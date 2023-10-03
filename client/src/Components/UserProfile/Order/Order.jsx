@@ -11,7 +11,6 @@ const Order = () => {
   const { id } = useSelector((state) => state.app.user);
   const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
   const { data, isLoading } = useQuery("allorders", () => getAllOrders(id));
-  console.log(data);
 
   //Mutation Run For Handle Delete--
   const queryClient = useQueryClient();

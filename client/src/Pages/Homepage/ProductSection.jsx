@@ -126,14 +126,12 @@ const ProductSection = () => {
                 );
               })}
             </div>
-            <button className="btn-loadmore" onClick={handleLoadMore}>
-                Load More
-              </button>
-            {/* {loadMoreVisible && (
+
+            {loadMoreVisible && (
               <button className="btn-loadmore" onClick={handleLoadMore}>
                 Load More
               </button>
-            )} */}
+            )}
           </div>
         </>
       )}

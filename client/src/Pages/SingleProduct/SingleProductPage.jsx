@@ -20,7 +20,6 @@ const SingleProductPage = () => {
   const { data, isLoading } = useQuery("SingleProduct", async () =>
     getSingleProducts(slug)
   );
-  console.log(data);
 
   //filter Similar Products-----------
   useEffect(() => {

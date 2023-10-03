@@ -74,7 +74,6 @@ const Cart = () => {
     orderId: item.orderId,
     price: item.price,
   }));
-  console.log(productData);
 
   const HandleCheckout = (payment) => {
     // const filterIds = cartItems.map((item) => item.id);
