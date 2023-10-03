@@ -49,7 +49,7 @@ const AllProductsAdmin = () => {
 
   const { data } = useQuery("allproducts", getAllProducts);
   // console.log(data, "products");
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/";
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/";
 
   //Mutation Run For Handle Delete--
   const queryClient = useQueryClient();

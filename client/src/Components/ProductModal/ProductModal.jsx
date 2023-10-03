@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const ProductModal = ({ searchdata, setsearh }) => {
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
 
   //Search filter-------
   const filteredProducts = data.filter((product) => {
