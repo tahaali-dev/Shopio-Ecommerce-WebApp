@@ -16,9 +16,7 @@ const Footer = () => {
           <Link to="/contactpage" className="link-d color-footer">
             Contact
           </Link>
-          <Link to="/aboutpage" className="link-d color-footer">
-            About Us
-          </Link>
+
           <Link to="/policypage" className="link-d color-footer">
             Privacy-Policy
           </Link>

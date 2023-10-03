@@ -1,0 +1,12 @@
+.main-cont-slide {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
+}
+.main-cont-slide img {
+  min-width: 94%;
+  min-height: 10vh;
+  max-height: 30vh;
+  border-radius: 10px;
+}

@@ -1,9 +1,9 @@
 import Navbar from "../../Components/Navbar/Navbar";
+import SlideProducts from "../../Components/SlideProducts/SlideProducts";
 import ImageSlider from "../../Components/Slider/ImageSlider";
 import Category from "../../Components/categories/Category";
 import Footer from "../../Components/footer/Footer";
 import ProductSection from "./ProductSection";
-
 
 const Homepage = () => {
   return (
@@ -12,7 +12,8 @@ const Homepage = () => {
       <div className="min-height-80">
         <ImageSlider />
         <Category />
-        <ProductSection/>
+        <ProductSection />
+        <SlideProducts />
       </div>
       <Footer />
     </div>
