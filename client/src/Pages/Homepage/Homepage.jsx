@@ -13,7 +13,6 @@ const Homepage = () => {
         <ImageSlider />
         <Category />
         <ProductSection />
-        <SlideProducts />
       </div>
       <Footer />
     </div>

@@ -129,7 +129,7 @@ const Navbar = () => {
             <Link to="/" className="link-d" onClick={HandleMenu}>
               ContactUs
             </Link>
-            <Link to="/" className="link-d" onClick={HandleMenu}>
+            <Link to="/policypage" className="link-d" onClick={HandleMenu}>
               Privacy Policy
             </Link>
 
