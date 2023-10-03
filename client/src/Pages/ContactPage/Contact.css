@@ -1,0 +1,34 @@
+.contact-cont {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-contact {
+  /* border: 1px solid; */
+  min-width: 95%;
+  display: flex;
+}
+
+.content-contact {
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  font-family: var(--font1);
+  font-size: 20px;
+}
+@media(max-width:786px){
+    .inner-contact{
+        /* border: 1px solid; */
+        flex-direction: column;
+        min-height: 70vh;
+    }
+    .contact-cont{
+        min-height: 70vh;
+        justify-content: center;
+    }
+}

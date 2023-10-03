@@ -126,7 +126,7 @@ const Navbar = () => {
             <Link to="/catpage" className="link-d" onClick={HandleMenu}>
               Categories
             </Link>
-            <Link to="/" className="link-d" onClick={HandleMenu}>
+            <Link to="/contactpage" className="link-d" onClick={HandleMenu}>
               ContactUs
             </Link>
             <Link to="/policypage" className="link-d" onClick={HandleMenu}>
