@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { BsMinecartLoaded, BsSearch } from "react-icons/bs";
-import { RiAccountPinCircleFill, RiMenu4Line } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
+import { RiMenu4Line } from "react-icons/ri";
 import { GrClose } from "react-icons/gr";
+import { FiShoppingCart } from "react-icons/fi";
 import LogReg from "../Log-Reg/LogReg";
 import { useDispatch, useSelector } from "react-redux";
 import { Setclose, StoreToken, storeUser } from "../../Redux/LogregSlice";
@@ -100,10 +101,10 @@ const Navbar = () => {
           )}
 
           <Link to="/cartpage" className="link-cart">
-            <BsMinecartLoaded />
+            <FiShoppingCart />
           </Link>
           <Link to="/dashboard" className="link-cart">
-            <RiAccountPinCircleFill />
+            <CgProfile />
           </Link>
         </div>
 

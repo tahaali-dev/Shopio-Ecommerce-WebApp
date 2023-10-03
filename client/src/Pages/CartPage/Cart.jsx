@@ -143,7 +143,7 @@ const Cart = () => {
               ) : (
                 <div className="inner-sec">
                   <h2>Checkout Now </h2>
-                  <img src="/cart.gif" alt="truck" />
+                  <img src="/cart.png" alt="truck" />
                   <div>
                     <p>Total items</p>
                     <h4>{cartTotalQuantity}pcs</h4>

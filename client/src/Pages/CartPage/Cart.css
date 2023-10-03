@@ -128,8 +128,11 @@
 }
 .inner-sec img {
   /* border: 1px solid; */
-  min-height: 10vh;
+  min-height: 35vh;
   max-height: 35vh;
+  min-width: 18vw;
+  max-width: 18vw;
+  align-self: center;
 }
 .inner-sec div {
   /* border: 1px solid; */
