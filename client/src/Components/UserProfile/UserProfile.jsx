@@ -8,14 +8,14 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile-cont">
-      <div className="toggle-user">
+      <dipv className="toggle-user">
         <button className="toggle-btn" onClick={() => setswitch("Profile")}>
           Profile
         </button>
         <button className="toggle-btn" onClick={() => setswitch("Order")}>
           My Order
         </button>
-      </div>
+      </dipv>
       <div className="switch-cont">
         {switchpanel === "Order" ? (
           <>

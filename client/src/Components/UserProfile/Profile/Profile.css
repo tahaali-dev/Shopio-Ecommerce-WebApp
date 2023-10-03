@@ -1,38 +1,54 @@
 .profile-cont {
   /* border: 1px solid; */
-  min-height: 73vh;
+  max-height: 70vh;
+  min-width: 35%;
+  max-width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   flex-direction: column;
+  margin-top: 10px;
+  background-color: #b9b4c7;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .profile-cont h2 {
-  min-width: 13%;
-  min-height: 20vh;
+  min-width: 50%;
+  min-height: 50%;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
+  font-size: 100px;
   color: black;
   background-color: rgba(0, 0, 0, 0.24);
 }
-.details-cont{
-    /* border: 1px solid; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+.details-cont {
+  /* border: 1px solid; */
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.details-cont h3 {
+  text-transform: capitalize;
 }
 .address {
   background-color: rgba(0, 0, 0, 0.103);
   padding: 10px;
   border-radius: 10px;
+  min-width: 90%;
+  max-width: 90%;
 }
-@media(max-width:786px){
-    .profile-cont h2{
-        min-width: 50%;
-    }
+@media (max-width: 786px) {
+  .profile-cont{
+    min-width: 95%;
+  }
+
+  .profile-cont h2 {
+    min-width: 70%;
+  }
 }

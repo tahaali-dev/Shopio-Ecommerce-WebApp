@@ -22,7 +22,7 @@ const Cart = () => {
     cartdiscount,
     amountAfterDiscount,
   } = useSelector((state) => state.cart);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
   const user = useSelector((state) => state.app.user);
 
   //-------------------------------------
@@ -143,7 +143,7 @@ const Cart = () => {
               ) : (
                 <div className="inner-sec">
                   <h2>Checkout Now </h2>
-                  <img src="/delivery-truck.gif" alt="truck" />
+                  <img src="/cart.gif" alt="truck" />
                   <div>
                     <p>Total items</p>
                     <h4>{cartTotalQuantity}pcs</h4>

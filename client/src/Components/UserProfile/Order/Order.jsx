@@ -9,7 +9,7 @@ import moment from "moment";
 
 const Order = () => {
   const { id } = useSelector((state) => state.app.user);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
   const { data, isLoading } = useQuery("allorders", () => getAllOrders(id));
 
   //Mutation Run For Handle Delete--
