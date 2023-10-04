@@ -82,7 +82,7 @@ const Navbar = () => {
           <Link to="/catpage" className="link-d">
             Categories
           </Link>
-          <Link className="link-d">Support</Link>
+          <Link to="/contactpage" className="link-d">Support</Link>
         </div>
         {/* Div-4 */}
         <div className="div-4">
