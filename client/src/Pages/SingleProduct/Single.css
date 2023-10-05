@@ -129,10 +129,14 @@
     min-width: 100%;
     min-height: 38vh;
     max-height: 38vh;
+    display: flex;
+    justify-content: center;
   }
   .top-left img {
     min-height: 38vh;
     max-height: 38vh;
+    min-width: 80%;
+    max-width: 80%;
   }
   .top-right {
     /* border: 1px solid; */

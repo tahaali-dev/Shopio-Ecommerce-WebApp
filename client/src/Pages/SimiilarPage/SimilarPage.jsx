@@ -54,7 +54,7 @@ const Similarsinglepage = () => {
   };
 
   useEffect(() => {
-    scrollToSection("top", 70);
+    scrollToSection("top", 100);
   }, []);
 
   //Logs For testing
@@ -69,7 +69,7 @@ const Similarsinglepage = () => {
         </div>
       ) : (
         <>
-          <div className="single-main-cont">
+          <div className="single-main-cont" id="top">
             {/* Top Section */}
             <section className="top-single">
               {/* left */}

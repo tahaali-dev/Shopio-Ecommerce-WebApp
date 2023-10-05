@@ -52,7 +52,7 @@ const SingleProductPage = () => {
   };
 
   useEffect(() => {
-    scrollToSection("top", 70);
+    scrollToSection("top", 100);
   }, []);
 
   //Logs For testing
