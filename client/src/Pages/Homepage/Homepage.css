@@ -23,6 +23,12 @@
   height: 100px;
   background-color: #ccc;
 }
+.price-quantity h4 {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
 @media (max-width: 786px) {
   .gridproduct-section {
     /* border: 1px solid ; */

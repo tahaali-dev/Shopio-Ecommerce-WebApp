@@ -6,6 +6,8 @@ import Loader from "../../Components/Loader/Loader";
 import { addToCart } from "../../Redux/cart";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BsCurrencyRupee } from "react-icons/bs";
+//Imports---------
 
 const ProductModal = ({ searchdata, setsearh }) => {
   //Getting Products from Backend-------
@@ -24,8 +26,7 @@ const ProductModal = ({ searchdata, setsearh }) => {
   const navigate = useNavigate();
   const HandleSinglePage = (slug) => {
     navigate(`/singleproduct/${slug}`);
-    setsearh("")
-
+    setsearh("");
   };
 
   //Add To Cart------Handle
@@ -33,7 +34,7 @@ const ProductModal = ({ searchdata, setsearh }) => {
   const AddToCartHandle = (item) => {
     dispatch(addToCart(item));
     navigate("/cartpage");
-    setsearh("")
+    setsearh("");
   };
   return (
     <>
@@ -56,7 +57,10 @@ const ProductModal = ({ searchdata, setsearh }) => {
                     </h3>
                     <div className="price-quantity">
                       <p>Left : {item.quantity}pcs</p>
-                      <h4>${item.price.slice(0, 10)}</h4>
+                      <h4>
+                        <BsCurrencyRupee />
+                        {item.price.slice(0, 10)}
+                      </h4>
                     </div>
 
                     <div className="priceCont">

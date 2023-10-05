@@ -52,6 +52,11 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding-right: 10px;
 }
+.cart-card h4 {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+}
 .cart-card img {
   /* border: 1px solid; */
   min-width: 12%;
@@ -155,6 +160,9 @@
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cart-btn:hover {
   transform: scale(1.02);

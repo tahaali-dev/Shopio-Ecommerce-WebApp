@@ -5,6 +5,8 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { DeleteOrder, getAllOrders } from "../../../Apis/ProductApis.js";
 import Loader from "../../../Components/Loader/Loader";
 import moment from "moment";
+import { BsCurrencyRupee } from "react-icons/bs";
+
 //Imports-------------------------
 
 const Order = () => {
@@ -47,7 +49,10 @@ const Order = () => {
                 <div className="main-order-card" key={i}>
                   <div className="order-details">
                     <h4>{order.status}</h4>
-                    <h4>Paid ${order.payment}</h4>
+                    <h4>
+                      Paid <BsCurrencyRupee />
+                      {order.payment}
+                    </h4>
 
                     <h4>{formattedDate}</h4>
                     <h4>{order.products.length}</h4>

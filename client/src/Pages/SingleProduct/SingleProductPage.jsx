@@ -8,6 +8,8 @@ import { setSimilar } from "../../Redux/LogregSlice";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
 import lozad from "lozad";
+import { BsCurrencyRupee } from "react-icons/bs";
+
 //Imports----------------------------------------------
 
 const SingleProductPage = () => {
@@ -87,7 +89,10 @@ const SingleProductPage = () => {
               {/* Right */}
               <div className="top-right">
                 <h2>{data?.name}</h2>
-                <h3>${data?.price}</h3>
+                <h3>
+                  <BsCurrencyRupee />
+                  {data?.price}
+                </h3>
                 <p className="description">{data?.description}</p>
                 <p className="other-p">Stock Available : {data?.quantity}pcs</p>
                 <p className="other-p">Category Name : {data?.Category.name}</p>
@@ -128,7 +133,11 @@ const SingleProductPage = () => {
                         </h3>
                         <div className="price-quantity">
                           <p>Left : {item.quantity}pcs</p>
-                          <h4>${item.price.slice(0, 80)}</h4>
+
+                          <h4>
+                            <BsCurrencyRupee />
+                            {item.price.slice(0, 80)}
+                          </h4>
                         </div>
 
                         <div className="priceCont">

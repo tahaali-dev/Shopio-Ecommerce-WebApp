@@ -245,8 +245,6 @@
     /* border: 1px solid salmon; */
     min-width: 95vw;
     max-width: 95vw;
-    min-height: 50vh;
-    max-height: 50vh;
   }
   .create-product form {
     /* border: 1px solid salmon; */
@@ -378,7 +376,7 @@ select {
 
 @media (max-width: 786px) {
   .All-product {
-    border: 1px solid;
+    /* border: 1px solid; */
     grid-template-columns: 1fr 1fr;
     gap: 5px;
     justify-items: center;

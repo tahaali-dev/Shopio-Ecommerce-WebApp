@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import { getAllCats } from "../../Apis/CategoryApis.js";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BsCurrencyRupee } from "react-icons/bs";
+
 //Imoports----------------
 
 const AllProductsAdmin = () => {
@@ -103,11 +105,11 @@ const AllProductsAdmin = () => {
             <div className="content">
               <h3 onClick={() => HandleSinglePage(item.slug)}>
                 {item.name.slice(0, 50)}...
-              </h3>
-              <p>{item.description.slice(0, 50)}...</p>
+            </h3>
+              <p>{item.description.slice(0, 25)}...</p>
 
               <div className="priceCont">
-                <h4>${item.price.slice(0, 10)}</h4>
+                <h4><BsCurrencyRupee/>{item.price.slice(0, 10)}</h4>
                 <div className="icon-cont">
                   <RiDeleteBin6Fill
                     className="dlt-icon"

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Slider.css";
+import lozad from "lozad";
 
 const ImageSlider = () => {
+  const observer = lozad();
+  observer.observe();
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = ["/img1.png", "/img2.png", "/img3.png", "/img4.png"];
 
@@ -17,7 +21,12 @@ const ImageSlider = () => {
 
   return (
     <div className="image-slider">
-      <img src={images[currentIndex]} alt={`Image ${currentIndex}`} />
+      <img
+        src={images[currentIndex]}
+        alt={`Image ${currentIndex}`}
+        loading="lazy"
+        className="lozad"
+      />
     </div>
   );
 };

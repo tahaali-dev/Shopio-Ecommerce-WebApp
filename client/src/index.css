@@ -52,5 +52,15 @@ body {
   border: none;
   background-color: var(--blue);
   color: white;
-  border-radius: 10px;
+  border-radius: 7px;
+  min-width: 30%;
+  min-height: 7vh;
+  font-family: var(--font1);
+  transition: 0.3s ease-in-out;
+}
+.sub-btn:hover {
+  background-color: transparent;
+  color: black;
+  border: 1px solid;
+  transition: 0.3s ease-in-out;
 }

@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import { Setclose } from "../../Redux/LogregSlice";
 import { CheckoutProduct } from "../../Apis/ProductApis";
+import { BsCurrencyRupee } from "react-icons/bs";
+
 //Imports --------------------
 
 const Cart = () => {
@@ -111,7 +113,10 @@ const Cart = () => {
                         </button>
                       </div>
                     </div>
-                    <h4>${item.price.slice(0, 10)}</h4>
+                    <h4>
+                      <BsCurrencyRupee />
+                      {item.price.slice(0, 10)}
+                    </h4>
                     <div className="product-count-cont">
                       <button onClick={() => handleDecreaseCart(item)}>
                         -
@@ -151,22 +156,29 @@ const Cart = () => {
 
                   <div>
                     <p>Total Amount</p>
-                    <h4>${cartTotalAmount}</h4>
+                    <h4>
+                      <BsCurrencyRupee />
+                      {cartTotalAmount}
+                    </h4>
                   </div>
 
                   <div>
                     <p>Total Discount</p>
                     <span>
                       <h4>10%</h4>
-                      <h4>${cartdiscount}</h4>
+                      <h4>
+                        <BsCurrencyRupee />
+                        {cartdiscount}
+                      </h4>
                     </span>
                   </div>
 
-                  <button
+                <button
                     className="cart-btn"
                     onClick={() => HandleCheckout(amountAfterDiscount)}
                   >
-                    Pay ${amountAfterDiscount}
+                    Pay <BsCurrencyRupee />
+                    {amountAfterDiscount}
                   </button>
                 </div>
               )}

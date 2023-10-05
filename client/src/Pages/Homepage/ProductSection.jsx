@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
 import lozad from "lozad";
+import { BsCurrencyRupee } from 'react-icons/bs';
 //Imports-------------------
 
 const ProductSection = () => {
@@ -120,7 +121,10 @@ const ProductSection = () => {
                       </h3>
                       <div className="price-quantity">
                         <p>Left : {item.quantity}pcs</p>
-                        <h4>${item.price.slice(0, 10)}</h4>
+                        <h4>
+                          <BsCurrencyRupee />
+                          {item.price.slice(0, 10)}
+                        </h4>
                       </div>
 
                       <div className="priceCont">

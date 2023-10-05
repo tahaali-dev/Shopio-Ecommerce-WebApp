@@ -10,11 +10,13 @@ import {
 } from "../../Apis/ProductApis.js";
 import Loader from "../../Components/Loader/Loader";
 import moment from "moment";
+import { BsCurrencyRupee } from "react-icons/bs";
+
 //Imports-------------------------
 
 const Order = () => {
   const { id } = useSelector((state) => state.app.user);
-  const baseURL = "https://e-commerce-server-f8m6.onrender.com/"; //Url For image
+  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
   const { data, isLoading } = useQuery("alladminorders", () =>
     getAllAdminOrders()
   );
@@ -72,7 +74,10 @@ const Order = () => {
                       })}
                     </select>
 
-                    <h4>Paid ${order.payment}</h4>
+                    <h4>
+                      Paid <BsCurrencyRupee />
+                      {order.payment}
+                    </h4>
 
                     <h4>{formattedDate}</h4>
                     <h4>{order.products.length}</h4>
