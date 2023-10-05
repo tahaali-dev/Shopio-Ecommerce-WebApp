@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
 import lozad from "lozad";
-import { BsCurrencyRupee } from 'react-icons/bs';
+import { BsCurrencyRupee } from "react-icons/bs";
 //Imports-------------------
 
 const ProductSection = () => {
@@ -17,7 +17,7 @@ const ProductSection = () => {
   const navigate = useNavigate();
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
-  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
+  const baseURL = "https://extinct-bee-khakis.cyclic.app/"; //Url For image
   const categorySet = useSelector((state) => state.app.category);
 
   //Handle Single Product
@@ -90,6 +90,7 @@ const ProductSection = () => {
     navigate("/cartpage");
   };
 
+  console.log(visibleProducts);
   //Jsx Return----------------
   return (
     <>

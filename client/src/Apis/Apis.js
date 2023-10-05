@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 // ------------------Imports----------------------------
 export const apiUrl = axios.create({
-  baseURL: "https://uninterested-tan-centipede.cyclic.cloud",
+  baseURL: "https://shopioserver.vercel.app",
 });
 
 //User Register-------------------------------

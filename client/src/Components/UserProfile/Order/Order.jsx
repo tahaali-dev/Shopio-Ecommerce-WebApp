@@ -11,7 +11,7 @@ import { BsCurrencyRupee } from "react-icons/bs";
 
 const Order = () => {
   const { id } = useSelector((state) => state.app.user);
-  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
+  const baseURL = "https://extinct-bee-khakis.cyclic.app/"; //Url For image
   const { data, isLoading } = useQuery("allorders", () => getAllOrders(id));
 
   //Mutation Run For Handle Delete--

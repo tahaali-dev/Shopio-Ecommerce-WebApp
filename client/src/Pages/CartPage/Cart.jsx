@@ -24,7 +24,7 @@ const Cart = () => {
     cartdiscount,
     amountAfterDiscount,
   } = useSelector((state) => state.cart);
-  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
+  const baseURL = "https://extinct-bee-khakis.cyclic.app/"; //Url For image
   const user = useSelector((state) => state.app.user);
 
   //-------------------------------------
@@ -173,7 +173,7 @@ const Cart = () => {
                     </span>
                   </div>
 
-                <button
+                  <button
                     className="cart-btn"
                     onClick={() => HandleCheckout(amountAfterDiscount)}
                   >

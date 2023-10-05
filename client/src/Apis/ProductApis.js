@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 // ------------------Imports----------------------------
 export const apiUrl = axios.create({
-  baseURL: "https://uninterested-tan-centipede.cyclic.cloud",
+  baseURL: "https://extinct-bee-khakis.cyclic.app",
 });
 export const apiUrltest = axios.create({
   baseURL: "http://localhost:3000",

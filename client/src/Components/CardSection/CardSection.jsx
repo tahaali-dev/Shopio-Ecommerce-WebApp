@@ -18,7 +18,7 @@ const CardSection = () => {
 
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
-  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
+  const baseURL = "https://extinct-bee-khakis.cyclic.app/"; //Url For image
 
   // Query To Get All Categories
   const Category = useQuery("getCategory", getAllCats);

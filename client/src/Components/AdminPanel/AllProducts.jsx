@@ -51,7 +51,7 @@ const AllProductsAdmin = () => {
 
   const { data } = useQuery("allproducts", getAllProducts);
   // console.log(data, "products");
-  const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/";
+  const baseURL = "https://extinct-bee-khakis.cyclic.app/";
 
   //Mutation Run For Handle Delete--
   const queryClient = useQueryClient();
@@ -105,11 +105,14 @@ const AllProductsAdmin = () => {
             <div className="content">
               <h3 onClick={() => HandleSinglePage(item.slug)}>
                 {item.name.slice(0, 50)}...
-            </h3>
+              </h3>
               <p>{item.description.slice(0, 25)}...</p>
 
               <div className="priceCont">
-                <h4><BsCurrencyRupee/>{item.price.slice(0, 10)}</h4>
+                <h4>
+                  <BsCurrencyRupee />
+                  {item.price.slice(0, 10)}
+                </h4>
                 <div className="icon-cont">
                   <RiDeleteBin6Fill
                     className="dlt-icon"
