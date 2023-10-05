@@ -3,13 +3,13 @@ import "./Slider.css";
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["/thub1.jpg", "/thub2.jpg", "/img3.jpg"];
+  const images = ["/img1.png", "/img2.png", "/img3.png", "/img4.png"];
 
   useEffect(() => {
     const timer = setInterval(() => {
       const nextIndex = (currentIndex + 1) % images.length;
       setCurrentIndex(nextIndex);
-    }, 2000);
+    }, 3000);
 
     // Clear the interval on unmount to prevent memory leaks
     return () => clearInterval(timer);
