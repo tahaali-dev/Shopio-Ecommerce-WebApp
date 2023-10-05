@@ -10,6 +10,7 @@ import ProductPage from "./Pages/ProductPage/ProductPage";
 import SingleProductPage from "./Pages/SingleProduct/SingleProductPage";
 import Cart from "./Pages/CartPage/Cart";
 import Catpage from "./Pages/CategoryPage/Catpage";
+import Similarsinglepage from "./Pages/SimiilarPage/SimilarPage";
 //Imports ----------------
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/allproduct" element={<ProductPage />} />
           <Route path="/singleproduct/:slug" element={<SingleProductPage />} />
+          <Route path="/similarproduct/:slug" element={<Similarsinglepage />} />
           <Route path="/cartpage" element={<Cart />} />
           <Route path="/catpage" element={<Catpage />} />
           <Route path="/contactpage" element={<Contactpage />} />

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Single.css";
 import { useMutation, useQuery } from "react-query";
 import { getAllProducts, getSingleProducts } from "../../Apis/ProductApis";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,7 +8,7 @@ import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
 //Imports----------------------------------------------
 
-const SingleProductPage = () => {
+const Similarsinglepage = () => {
   //utilts--------
   const dispatch = useDispatch();
   const { slug } = useParams();
@@ -17,7 +16,6 @@ const SingleProductPage = () => {
   const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/";
 
   // Handle SingleProductFetch
-
   const { data, isLoading } = useQuery("SingleProduct", async () =>
     getSingleProducts(slug)
   );
@@ -32,12 +30,12 @@ const SingleProductPage = () => {
       });
       if (filterSimilar) {
         dispatch(setSimilar(filterSimilar));
-        localStorage.setItem("similar", JSON.stringify(filterSimilar));
       }
     }
   }, [data]);
 
   const similar = useSelector((state) => state.app.similar);
+  // console.log(similar);`
 
   //Add To Cart------Handle
   const navigate = useNavigate();
@@ -46,6 +44,10 @@ const SingleProductPage = () => {
     navigate("/cartpage");
   };
 
+  //Handle Single Product
+  const HandleSinglePage = (slug) => {
+    navigate(`/singleproduct/${slug}`);
+  };
   //Handle Similar page
   const HandleSimilarPage = (slug) => {
     navigate(`/similarproduct/${slug}`);
@@ -67,7 +69,7 @@ const SingleProductPage = () => {
         </div>
       ) : (
         <>
-          <div className="single-main-cont" id="top">
+          <div className="single-main-cont">
             {/* Top Section */}
             <section className="top-single">
               {/* left */}
@@ -104,17 +106,12 @@ const SingleProductPage = () => {
                     <div key={i} className="ProductCard">
                       <img src={`${baseURL}${item.image}`} alt="image" />
                       <div className="content">
-                        <h3
-                          onClick={() => {
-                            HandleSimilarPage(item.slug);
-                            scrollToSection("top", 10);
-                          }}
-                        >
+                        <h3 onClick={() => HandleSinglePage(item.slug)}>
                           {item.name.slice(0, 50)}...
                         </h3>
                         <div className="price-quantity">
                           <p>Left : {item.quantity}pcs</p>
-                          <h4>${item.price.slice(0, 80)}</h4>
+                          <h4>${item.price.slice(0, 10)}</h4>
                         </div>
 
                         <div className="priceCont">
@@ -138,7 +135,7 @@ const SingleProductPage = () => {
   );
 };
 
-export default SingleProductPage;
+export default Similarsinglepage;
 
 const scrollToSection = (id, offset = 0) => {
   const element = document.getElementById(id);

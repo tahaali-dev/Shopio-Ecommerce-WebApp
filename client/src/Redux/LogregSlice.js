@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const user = JSON.parse(localStorage.getItem("user"));
 const token = JSON.parse(localStorage.getItem("token"));
 const cart = JSON.parse(localStorage.getItem("cart"));
+const similar = JSON.parse(localStorage.getItem("similar"));
 //Imports--------------------------
 
 const Userslice = createSlice({
@@ -12,7 +13,7 @@ const Userslice = createSlice({
     user: user ? user : null,
     token: token ? token : null,
     category: "",
-    similar: [],
+    similar: similar ? similar : [],
     cartprs: cart ? cart : [],
   },
   reducers: {
