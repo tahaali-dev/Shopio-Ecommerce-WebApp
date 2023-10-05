@@ -8,9 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../Loader/Loader";
+import lozad from "lozad";
+
 //Imports-------------------
 
 const CardSection = () => {
+  const observer = lozad();
+  observer.observe();
+
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
   const baseURL = "https://uninterested-tan-centipede.cyclic.cloud/"; //Url For image
@@ -168,7 +173,12 @@ const CardSection = () => {
               {visibleProducts?.map((item, i) => {
                 return (
                   <div key={i} className="ProductCard">
-                    <img src={`${baseURL}${item.image}`} alt="image" />
+                    <img
+                      src={`${baseURL}${item.image}`}
+                      alt="image"
+                      className="lozad"
+                      loading="lazy"
+                    />
                     <div className="content">
                       <h3 onClick={() => HandleSinglePage(item.slug)}>
                         {item.name.slice(0, 50)}...

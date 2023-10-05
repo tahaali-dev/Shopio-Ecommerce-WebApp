@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
+import lozad from "lozad";
 //Imports-------------------
 
 const ProductSection = () => {
+  const observer = lozad();
+  observer.observe();
+
   const navigate = useNavigate();
   //Getting Products from Backend-------
   const { data, isLoading } = useQuery("allproducts", getAllProducts);
@@ -51,7 +55,7 @@ const ProductSection = () => {
   //Load More-------------------
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
-  const productsPerPage = 10;
+  const productsPerPage = 25;
 
   useEffect(() => {
     if (Array.isArray(filteredProducts) && filteredProducts.length > 0) {
@@ -103,7 +107,13 @@ const ProductSection = () => {
               {visibleProducts?.map((item, i) => {
                 return (
                   <div key={i} className="ProductCard">
-                    <img src={`${baseURL}${item.image}`} alt="image" />
+                    <img
+                      className="lozad"
+                      src={`${baseURL}${item.image}`}
+                      alt="image"
+                      loading="lazy"
+                      // data-src="./logo.png"
+                    />
                     <div className="content">
                       <h3 onClick={() => HandleSinglePage(item.slug)}>
                         {item.name.slice(0, 50)}...

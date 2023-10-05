@@ -7,9 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSimilar } from "../../Redux/LogregSlice";
 import { addToCart } from "../../Redux/cart";
 import Loader from "../../Components/Loader/Loader";
+import lozad from "lozad";
 //Imports----------------------------------------------
 
 const SingleProductPage = () => {
+  const observer = lozad();
+  observer.observe();
+
   //utilts--------
   const dispatch = useDispatch();
   const { slug } = useParams();
@@ -72,7 +76,12 @@ const SingleProductPage = () => {
             <section className="top-single">
               {/* left */}
               <div className="top-left">
-                <img src={`${baseURL}${data?.image}`} alt="image" />
+                <img
+                  src={`${baseURL}${data?.image}`}
+                  alt="image"
+                  className="lozad"
+                  loading="lazy"
+                />
               </div>
 
               {/* Right */}
@@ -102,7 +111,12 @@ const SingleProductPage = () => {
                 {similar?.map((item, i) => {
                   return (
                     <div key={i} className="ProductCard">
-                      <img src={`${baseURL}${item.image}`} alt="image" />
+                      <img
+                        src={`${baseURL}${item.image}`}
+                        alt="image"
+                        className="lozad"
+                        loading="lazy"
+                      />
                       <div className="content">
                         <h3
                           onClick={() => {

@@ -18,6 +18,11 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
   margin-bottom: 10px;
 }
+.lozad {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+}
 @media (max-width: 786px) {
   .gridproduct-section {
     /* border: 1px solid ; */
