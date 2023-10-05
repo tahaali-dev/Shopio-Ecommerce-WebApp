@@ -17,6 +17,7 @@
   max-width: 94vw !important;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
   margin-bottom: 10px;
+  padding: 0px !important;
 }
 .lozad {
   width: 100px;
@@ -35,5 +36,6 @@
     min-width: 95vw !important;
     grid-template-columns: 1fr 1fr !important;
     margin-bottom: 0px;
+    padding: 0px;
   }
 }

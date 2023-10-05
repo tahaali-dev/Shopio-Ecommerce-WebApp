@@ -46,16 +46,16 @@
   max-height: 11vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.336);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  padding-right: 10px;
 }
 .cart-card h4 {
   /* border: 1px solid; */
   display: flex;
   align-items: center;
+  margin-right: 5px;
 }
 .cart-card img {
   /* border: 1px solid; */
@@ -64,13 +64,16 @@
   min-height: 8vh;
   max-height: 8vh;
   border-radius: 5px;
-  margin-left: 10px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.cart-card h4{
+  /* border: 1px solid; */
+  min-width: 25%;
 }
 .price-tit {
   /* border: 1px solid; */
-  min-width: 50%;
-  max-width: 50%;
+  min-width: 30%;
+  max-width: 30%;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -82,6 +85,7 @@
   min-width: 20%;
   max-width: 20%;
   justify-content: space-between;
+  margin-right: 5px;
 }
 .product-count-cont button {
   min-width: 25%;
