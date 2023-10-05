@@ -41,7 +41,7 @@ const Footer = () => {
 
           <Link
             className="link-footer"
-            to="https://github.com/devtahajs"
+            to="https://github.com/tahaali-dev"
             target="_blank"
           >
             <BiLogoGithub />
